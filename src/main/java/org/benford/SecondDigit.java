@@ -1,6 +1,6 @@
 package org.benford;
 
-public class SecondDigit extends BenfordSerie {
+public class SecondDigit extends DigitDistribution {
 
   public SecondDigit() {
     super(new Double[]{

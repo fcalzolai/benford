@@ -22,7 +22,7 @@ public class DigitTest {
       actual += d;
     }
 
-    assertEquals(1.0, actual, BenfordConsts.DELTA);
+    assertEquals(1.0, actual, Consts.DELTA);
   }
 
 }

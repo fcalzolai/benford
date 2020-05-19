@@ -5,15 +5,15 @@ import lombok.Getter;
 import javax.validation.constraints.Size;
 
 @Getter
-public class BenfordSerie {
+public class DigitSerie {
 
-  private Double[] serie;
+  Double[] serie;
 
-  public BenfordSerie(@Size(min = 10, max = 10) Double[] serie) {
+  public DigitSerie(@Size(min = 10, max = 10) Double[] serie) {
     this.serie = serie;
   }
 
-  public BenfordSerie() {
+  public DigitSerie() {
     serie = new Double[10];
   }
 }
