@@ -1,8 +1,8 @@
 package org.benford;
 
-public class FirstDigit extends DigitDistribution {
+public class FirstDigitDistribution extends DigitDistribution {
 
-  public FirstDigit() {
+  public FirstDigitDistribution() {
     super(new Double[]{
             0.0,
             0.30103,

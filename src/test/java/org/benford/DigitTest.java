@@ -8,12 +8,12 @@ public class DigitTest {
 
   @Test
   public void firstDigit(){
-    DistributionTest(new FirstDigit().getSeries());
+    DistributionTest(new FirstDigitDistribution().getSeries());
   }
 
   @Test
   public void secondDigitDistribution(){
-    DistributionTest(new SecondDigit().getSeries());
+    DistributionTest(new SecondDigitDistribution().getSeries());
   }
 
   private void DistributionTest(Double[] serie) {
