@@ -1,28 +1,24 @@
 package org.benford;
 
-import javax.validation.constraints.Size;
+public class BenfordDistribution extends DigitDistribution {
 
-public class BenfordDistribution extends DigitSeries {
+  private final int count;
+  private DigitSeries zscore;
 
-  private int count;
-
-  public BenfordDistribution(int count) {
-    super();
-    this.count = count;
-  }
-
-  public BenfordDistribution(@Size(min = 10, max = 10) Double[] serie, int count) {
-    super(serie);
+  public BenfordDistribution(int count, Double[] series) {
+    super(series);
     this.count = count;
   }
 
   public DigitSeries getZscore(DigitSeries expected) {
-    Double[] zscore = new Double[10];
-    for (int i = 0; i < series.length; i++) {
-      zscore[i] = getZscore(series[i], expected.series[i]);
+    if (zscore == null) {
+      for (int i = 0; i < series.length; i++) {
+        series[i] = getZscore(series[i], expected.series[i]);
+      }
+      zscore = new DigitSeries(series);
     }
 
-    return new DigitSeries(zscore);
+    return zscore;
   }
 
   private Double getZscore(Double actual, Double expected) {
@@ -31,3 +27,4 @@ public class BenfordDistribution extends DigitSeries {
     return numerator / denominator;
   }
 }
+
