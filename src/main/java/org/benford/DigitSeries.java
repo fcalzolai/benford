@@ -5,18 +5,28 @@ import lombok.Getter;
 @Getter
 public class DigitSeries {
 
-  Double[] series;
+  double[] series;
 
-  public DigitSeries(Double[] series) {
+  public DigitSeries(double[] series) {
     checkSeriesSize(series);
     this.series = series;
   }
 
   public DigitSeries() {
-    series = new Double[10];
+    series = new double[10];
   }
 
-  private void checkSeriesSize(Double[] series) {
+  @Override
+  public int hashCode() {
+    return super.hashCode();
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    return super.equals(obj);
+  }
+
+  private void checkSeriesSize(double[] series) {
     if (series == null) {
       throw new IllegalArgumentException("Series cannot be null");
     }

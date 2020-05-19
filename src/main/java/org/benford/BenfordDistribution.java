@@ -5,7 +5,7 @@ public class BenfordDistribution extends DigitDistribution {
   private final int count;
   private DigitSeries zscore;
 
-  public BenfordDistribution(int count, Double[] series) {
+  public BenfordDistribution(int count, double[] series) {
     super(series);
     this.count = count;
   }

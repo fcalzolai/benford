@@ -10,7 +10,7 @@ public class BenfordSeries extends DigitSeries {
     this.count = count;
   }
 
-  public BenfordSeries(Double[] serie, int count) {
+  public BenfordSeries(double[] serie, int count) {
     super(serie);
     this.count = count;
   }

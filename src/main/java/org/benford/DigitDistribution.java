@@ -4,12 +4,12 @@ import static org.benford.Consts.SUM_SERIE;
 
 public class DigitDistribution extends DigitSeries {
 
-  public DigitDistribution(Double[] series) {
+  public DigitDistribution(double[] series) {
     super(series);
     checkDistribution(series);
   }
 
-  private void checkDistribution(Double[] series) {
+  private void checkDistribution(double[] series) {
     Double actual = 0.0;
     for (Double d : series) {
       actual += d;

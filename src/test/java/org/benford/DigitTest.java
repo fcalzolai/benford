@@ -16,7 +16,7 @@ public class DigitTest {
     DistributionTest(new SecondDigitDistribution().getSeries());
   }
 
-  private void DistributionTest(Double[] serie) {
+  private void DistributionTest(double[] serie) {
     Double actual = 0.0;
     for (Double d : serie) {
       actual += d;

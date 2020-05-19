@@ -3,7 +3,7 @@ package org.benford;
 public class FirstDigitDistribution extends DigitDistribution {
 
   public FirstDigitDistribution() {
-    super(new Double[]{
+    super(new double[]{
             0.0,
             0.30103,
             0.176091,
