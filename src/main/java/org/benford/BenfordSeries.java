@@ -22,12 +22,12 @@ public class BenfordSeries extends DoubleSeries {
     return getDistribution().getZscore(digitDistribution);
   }
 
-  private BenfordDistribution getDistribution() {
-    double[] series2 = new double[10];
+  public BenfordDistribution getDistribution() {
+    double[] percentage = new double[10];
     for (int i = 0; i < series.length; i++) {
-      series2[i] = series[i] / getCount();
+      percentage[i] = series[i] / getCount();
     }
 
-    return new BenfordDistribution(getCount(), series2);
+    return new BenfordDistribution(getCount(), percentage);
   }
 }

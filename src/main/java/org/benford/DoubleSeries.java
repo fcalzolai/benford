@@ -1,8 +1,10 @@
 package org.benford;
 
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
+@ToString
 public class DoubleSeries {
 
   double[] series;
