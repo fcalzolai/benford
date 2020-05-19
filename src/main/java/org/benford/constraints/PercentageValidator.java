@@ -15,7 +15,7 @@ public class PercentageValidator implements ConstraintValidator<Percentage, Digi
 
   @Override
   public boolean isValid(DigitDistribution value, ConstraintValidatorContext context) {
-    Double[] serie = value.getSerie();
+    Double[] serie = value.getSeries();
 
     Double actual = 0.0;
     for (Double d : serie) {

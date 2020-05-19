@@ -2,7 +2,7 @@ package org.benford;
 
 import javax.validation.constraints.Size;
 
-public class BenfordDistribution extends DigitSerie {
+public class BenfordDistribution extends DigitSeries {
 
   private int count;
 
@@ -16,13 +16,13 @@ public class BenfordDistribution extends DigitSerie {
     this.count = count;
   }
 
-  public DigitSerie getZscore(DigitSerie expected) {
+  public DigitSeries getZscore(DigitSeries expected) {
     Double[] zscore = new Double[10];
-    for (int i = 0; i < serie.length; i++) {
-      zscore[i] = getZscore(serie[i], expected.serie[i]);
+    for (int i = 0; i < series.length; i++) {
+      zscore[i] = getZscore(series[i], expected.series[i]);
     }
 
-    return new DigitSerie(zscore);
+    return new DigitSeries(zscore);
   }
 
   private Double getZscore(Double actual, Double expected) {

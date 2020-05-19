@@ -1,13 +1,23 @@
 package org.benford;
 
-import org.benford.constraints.Percentage;
+import static org.benford.Consts.SUM_SERIE;
 
-import javax.validation.constraints.Size;
+public class DigitDistribution extends DigitSeries {
 
-public class DigitDistribution extends DigitSerie {
+  public DigitDistribution(Double[] series) {
+    super(series);
+    checkDistribution(series);
+  }
 
-  public DigitDistribution(@Size(min = 10, max = 10) @Percentage Double[] serie) {
-    super(serie);
+  private void checkDistribution(Double[] series) {
+    Double actual = 0.0;
+    for (Double d : series) {
+      actual += d;
+    }
+
+    if (Math.abs(actual - SUM_SERIE) > Consts.DELTA) {
+      throw new IllegalArgumentException(String.format("Invalid series value: {%s}. It should be {%s}", actual, SUM_SERIE));
+    }
   }
 }
 
