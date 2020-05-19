@@ -3,6 +3,7 @@ package org.benford;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class DigitTest {
 
@@ -16,9 +17,36 @@ public class DigitTest {
     DistributionTest(new SecondDigitDistribution().getSeries());
   }
 
-  private void DistributionTest(double[] serie) {
+  @Test
+  public void lessThan1() {
+    double[] series = getArray(0.0);
+    assertThrows(IllegalArgumentException.class, () -> new DigitDistribution(series));
+  }
+
+  @Test
+  public void greaterThan1() {
+    double[] series = getArray(0.2);
+    assertThrows(IllegalArgumentException.class, () -> new DigitDistribution(series));
+  }
+
+  private double[] getArray(Double d) {
+    return new double[]{
+            d,
+            d,
+            d,
+            d,
+            d,
+            d,
+            d,
+            d,
+            d,
+            d,
+    };
+  }
+
+  private void DistributionTest(double[] series) {
     Double actual = 0.0;
-    for (Double d : serie) {
+    for (Double d : series) {
       actual += d;
     }
 

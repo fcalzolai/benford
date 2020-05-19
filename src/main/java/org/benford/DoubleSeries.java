@@ -3,27 +3,13 @@ package org.benford;
 import lombok.Getter;
 
 @Getter
-public class DigitSeries {
+public class DoubleSeries {
 
   double[] series;
 
-  public DigitSeries(double[] series) {
+  public DoubleSeries(double[] series) {
     checkSeriesSize(series);
     this.series = series;
-  }
-
-  public DigitSeries() {
-    series = new double[10];
-  }
-
-  @Override
-  public int hashCode() {
-    return super.hashCode();
-  }
-
-  @Override
-  public boolean equals(Object obj) {
-    return super.equals(obj);
   }
 
   private void checkSeriesSize(double[] series) {

@@ -3,19 +3,19 @@ package org.benford;
 public class BenfordDistribution extends DigitDistribution {
 
   private final int count;
-  private DigitSeries zscore;
+  private DoubleSeries zscore;
 
   public BenfordDistribution(int count, double[] series) {
     super(series);
     this.count = count;
   }
 
-  public DigitSeries getZscore(DigitSeries expected) {
+  public DoubleSeries getZscore(DoubleSeries expected) {
     if (zscore == null) {
       for (int i = 0; i < series.length; i++) {
         series[i] = getZscore(series[i], expected.series[i]);
       }
-      zscore = new DigitSeries(series);
+      zscore = new DoubleSeries(series);
     }
 
     return zscore;

@@ -2,7 +2,7 @@ package org.benford;
 
 import static org.benford.Consts.SUM_SERIE;
 
-public class DigitDistribution extends DigitSeries {
+public class DigitDistribution extends DoubleSeries {
 
   public DigitDistribution(double[] series) {
     super(series);
@@ -10,8 +10,8 @@ public class DigitDistribution extends DigitSeries {
   }
 
   private void checkDistribution(double[] series) {
-    Double actual = 0.0;
-    for (Double d : series) {
+    double actual = 0.0;
+    for (double d : series) {
       actual += d;
     }
 
