@@ -1,8 +1,8 @@
-package org.benford2;
+package org.benford;
 
-import org.benford2.data.AimcValues;
-import org.benford2.data.WikiPopulationValues;
-import org.benford2.data.WikiValues;
+import org.benford.data.AimcValues;
+import org.benford.data.WikiPopulationValues;
+import org.benford.data.WikiValues;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

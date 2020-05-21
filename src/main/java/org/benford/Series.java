@@ -3,18 +3,18 @@ package org.benford;
 import lombok.Getter;
 import lombok.ToString;
 
-@Getter
 @ToString
-public class DoubleSeries {
+@Getter
+public class Series {
 
-  double[] series;
+  protected final double[] series;
 
-  public DoubleSeries(double[] series) {
-    checkSeriesSize(series);
+  public Series(double[] series) {
     this.series = series;
+    checkSeriesSize(series);
   }
 
-  private void checkSeriesSize(double[] series) {
+  protected void checkSeriesSize(double[] series) {
     if (series == null) {
       throw new IllegalArgumentException("Series cannot be null");
     }

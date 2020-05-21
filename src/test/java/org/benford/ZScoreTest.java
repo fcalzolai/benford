@@ -1,4 +1,4 @@
-package org.benford2;
+package org.benford;
 
 import org.junit.jupiter.api.Test;
 

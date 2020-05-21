@@ -1,4 +1,4 @@
-package org.benford2;
+package org.benford;
 
 public class BenfordConst {
 

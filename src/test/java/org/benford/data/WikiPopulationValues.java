@@ -1,4 +1,4 @@
-package org.benford2.data;
+package org.benford.data;
 
 import org.junit.jupiter.api.Assertions;
 

@@ -5,7 +5,6 @@ import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import com.opencsv.exceptions.CsvValidationException;
-import org.benford.BenfordDistribution;
 import org.benford.BenfordSeries;
 
 import java.io.IOException;
@@ -25,11 +24,10 @@ public class FileLoader {
     this.column = column;
   }
 
-  public BenfordDistribution createBenfordDistribution() throws IOException, CsvValidationException {
+  public BenfordSeries createBenfordSeries() throws IOException, CsvValidationException {
     CSVReader csvReader = getReader(reader);
     double[] series = getSeries(csvReader);
-    BenfordSeries benfordSeries = new BenfordSeries(series);
-    return benfordSeries.getDistribution();
+    return new BenfordSeries(series);
   }
 
   private CSVReader getReader(Reader reader) {

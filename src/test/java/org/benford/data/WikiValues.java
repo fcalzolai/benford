@@ -1,4 +1,4 @@
-package org.benford2.data;
+package org.benford.data;
 
 public class WikiValues implements TestValues {
 
