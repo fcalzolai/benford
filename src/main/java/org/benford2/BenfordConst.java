@@ -28,4 +28,8 @@ public class BenfordConst {
           0.0850
   };
 
+  public static double VALUES_95 = 1.96;
+
+  public static double VALUES_99 = 2.58;
+
 }

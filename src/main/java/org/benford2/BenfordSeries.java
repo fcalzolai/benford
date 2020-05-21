@@ -1,16 +1,14 @@
 package org.benford2;
 
-public class BenfordCalculator {
-
-  private final double[] series;
+public class BenfordSeries extends Series {
 
   private double[] digitDistribution;
   private int count;
-  private double[] zscoreFirstDigit;
-  private double[] zscoreSecondDigit;
+  private ZScore zscoreFirstDigit;
+  private ZScore zscoreSecondDigit;
 
-  public BenfordCalculator(double[] series) {
-    this.series = series;
+  public BenfordSeries(double[] series) {
+    super(series);
   }
 
   public double[] getDigitDistribution() {
@@ -31,17 +29,19 @@ public class BenfordCalculator {
     return count;
   }
 
-  public double[] getZscoreFirstDigit() {
+  public ZScore getZscoreFirstDigit() {
     if (zscoreFirstDigit == null) {
-      zscoreFirstDigit = calculateZscore(BenfordConst.FIRST_DIGIT_DISTRIBUTION);
+      double[] series = calculateZscore(BenfordConst.FIRST_DIGIT_DISTRIBUTION);
+      zscoreFirstDigit = new ZScore(series);
     }
 
     return zscoreFirstDigit;
   }
 
-  public double[] getZscoreSecondDigit() {
+  public ZScore getZscoreSecondDigit() {
     if (zscoreSecondDigit == null) {
-      zscoreSecondDigit = calculateZscore(BenfordConst.SECOND_DIGIT_DISTRIBUTION);
+      double[] series = calculateZscore(BenfordConst.SECOND_DIGIT_DISTRIBUTION);
+      zscoreSecondDigit = new ZScore(series);
     }
 
     return zscoreSecondDigit;
