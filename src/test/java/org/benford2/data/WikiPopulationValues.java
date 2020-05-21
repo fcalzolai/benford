@@ -1,5 +1,7 @@
 package org.benford2.data;
 
+import org.junit.jupiter.api.Assertions;
+
 public class WikiPopulationValues implements TestValues {
 
   private static final double PERCENTAGE_DELTA = 0.001;
@@ -261,9 +263,24 @@ public class WikiPopulationValues implements TestValues {
           50
   };
 
+  private static final double[] EXPECTED_VALUES = new double[]{
+          0,
+          72,
+          36,
+          31,
+          24,
+          27,
+          19,
+          9,
+          12,
+          11
+  };
+
   @Override
   public double[] getValues() {
-    return calcValues(VALUES);
+    double[] values = calcValues(VALUES);
+    Assertions.assertArrayEquals(EXPECTED_VALUES, values);
+    return values;
   }
 
   @Override

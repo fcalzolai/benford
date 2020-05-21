@@ -1,14 +1,17 @@
 package org.benford2;
 
+import lombok.Getter;
 import lombok.ToString;
 
 @ToString
+@Getter
 public class Series {
 
   protected final double[] series;
 
   public Series(double[] series) {
     this.series = series;
+    checkSeriesSize(series);
   }
 
   protected void checkSeriesSize(double[] series) {
