@@ -35,15 +35,12 @@ public class BenfordSeriesFactory {
     File[] files = new File(url.getFile()).listFiles();
     HashMap<String, ZScore> readers = new HashMap<>();
     for (File file: files) {
-//      long start = System.currentTimeMillis();
-      FileReader reader = new FileReader(file);
-      FileLoader loader = new FileLoader(reader, skipLine, column);
-      BenfordSeries benfordSeries = loader.createBenfordSeries();
-      readers.put(file.getName(), benfordSeries.getZscoreFirstDigit());
-//      System.out.println(
-//              file.getName() +
-//                      " count [" + benfordSeries.getCount()+ "] " +
-//                      "in " + (System.currentTimeMillis() - start) +  " millis.");
+      if (validateFile(file)) {
+        FileReader reader = new FileReader(file);
+        FileLoader loader = new FileLoader(reader, skipLine, column);
+        BenfordSeries benfordSeries = loader.createBenfordSeries();
+        readers.put(file.getName(), benfordSeries.getZscoreFirstDigit());
+      }
     }
     return readers;
   }
@@ -56,16 +53,10 @@ public class BenfordSeriesFactory {
     HashMap<String, BenfordDataPrinter> readers = new HashMap<>();
     for (File file: files) {
       if (validateFile(file)) {
-        long start = System.currentTimeMillis();
         FileReader reader = new FileReader(file);
         FileLoader loader = new FileLoader(reader, skipLine, column);
         BenfordSeries benfordSeries = loader.createBenfordSeries();
-
         readers.put(file.getName(), new BenfordDataPrinter(benfordSeries));
-        System.out.println(
-                file.getName() +
-                        " count [" + benfordSeries.getCount() + "] " +
-                        "in " + (System.currentTimeMillis() - start) + " millis.");
       }
     }
     return readers;
