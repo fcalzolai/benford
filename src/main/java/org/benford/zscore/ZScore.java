@@ -1,4 +1,7 @@
-package org.benford;
+package org.benford.zscore;
+
+import org.benford.BenfordConst;
+import org.benford.Series;
 
 public class ZScore extends Series {
 

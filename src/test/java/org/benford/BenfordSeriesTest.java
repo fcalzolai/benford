@@ -3,6 +3,7 @@ package org.benford;
 import org.benford.data.AimcValues;
 import org.benford.data.WikiPopulationValues;
 import org.benford.data.WikiValues;
+import org.benford.zscore.ZScore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

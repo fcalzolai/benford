@@ -1,5 +1,8 @@
 package org.benford;
 
+import org.benford.zscore.ZScore;
+import org.benford.zscore.ZScoreCalculator;
+
 import static org.benford.BenfordConst.FIRST_DIGIT_DISTRIBUTION;
 import static org.benford.BenfordConst.SECOND_DIGIT_DISTRIBUTION;
 

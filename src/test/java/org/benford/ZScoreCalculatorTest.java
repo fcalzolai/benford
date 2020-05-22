@@ -1,5 +1,6 @@
 package org.benford;
 
+import org.benford.zscore.ZScoreCalculator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -2,14 +2,17 @@ package org.benford.factory;
 
 import com.opencsv.exceptions.CsvValidationException;
 import org.benford.BenfordSeries;
-import org.benford.ZScore;
+import org.benford.zscore.ZScore;
 import org.benford.loader.FileLoader;
+import org.benford.printer.BenfordDataPrinter;
 
 import java.io.*;
 import java.net.URL;
 import java.util.HashMap;
 
 public class BenfordSeriesFactory {
+
+  private static final String INPUT_FILE_EXTENSION = ".csv";
 
   public static BenfordSeries getBenfordSeries(String path, int skipLine, int column)
           throws IOException, CsvValidationException {
@@ -32,17 +35,44 @@ public class BenfordSeriesFactory {
     File[] files = new File(url.getFile()).listFiles();
     HashMap<String, ZScore> readers = new HashMap<>();
     for (File file: files) {
-      long start = System.currentTimeMillis();
+//      long start = System.currentTimeMillis();
       FileReader reader = new FileReader(file);
       FileLoader loader = new FileLoader(reader, skipLine, column);
       BenfordSeries benfordSeries = loader.createBenfordSeries();
       readers.put(file.getName(), benfordSeries.getZscoreFirstDigit());
-      System.out.println(
-              file.getName() +
-                      " count [" + benfordSeries.getCount()+ "] " +
-                      "in " + (System.currentTimeMillis() - start) +  " millis.");
+//      System.out.println(
+//              file.getName() +
+//                      " count [" + benfordSeries.getCount()+ "] " +
+//                      "in " + (System.currentTimeMillis() - start) +  " millis.");
     }
     return readers;
+  }
+
+  public static HashMap<String, BenfordDataPrinter> getBenfordDataPrinters(String path, int skipLine, int column)
+          throws IOException, CsvValidationException {
+    ClassLoader classLoader = BenfordSeriesFactory.class.getClassLoader();
+    URL url = classLoader.getResource(path);
+    File[] files = new File(url.getFile()).listFiles();
+    HashMap<String, BenfordDataPrinter> readers = new HashMap<>();
+    for (File file: files) {
+      if (validateFile(file)) {
+        long start = System.currentTimeMillis();
+        FileReader reader = new FileReader(file);
+        FileLoader loader = new FileLoader(reader, skipLine, column);
+        BenfordSeries benfordSeries = loader.createBenfordSeries();
+
+        readers.put(file.getName(), new BenfordDataPrinter(benfordSeries));
+        System.out.println(
+                file.getName() +
+                        " count [" + benfordSeries.getCount() + "] " +
+                        "in " + (System.currentTimeMillis() - start) + " millis.");
+      }
+    }
+    return readers;
+  }
+
+  private static boolean validateFile(File file) {
+    return file.isFile() && file.getName().endsWith(INPUT_FILE_EXTENSION);
   }
 
   public static ZScore getZScore(String path, int skipLine, int column) throws IOException, CsvValidationException {
