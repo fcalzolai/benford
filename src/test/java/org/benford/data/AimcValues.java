@@ -3,7 +3,7 @@ package org.benford.data;
 public class AimcValues implements TestValues {
 
   private static final double PERCENTAGE_DELTA = 0.00005;
-  private static final double ZSCORE_DELTA = 0.07;
+  private static final double ZSCORE_DELTA = 0.12;
 
   private static final double[] EXPECTED_Z_SCORE = new double[]{
           1.769923893,

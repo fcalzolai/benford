@@ -3,6 +3,10 @@ package org.benford;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
+import static org.benford.BenfordConst.FIRST_DIGIT_DISTRIBUTION;
+
 public class ZScoreCalculatorTest {
 
   /*
@@ -35,38 +39,22 @@ public class ZScoreCalculatorTest {
           0.725
   };
 
-  class MockBenfordSeries extends BenfordSeries {
-    private final int count;
-    public MockBenfordSeries(int count) {
-      super(new double[10]);
-      this.count = count;
-    }
+  private static final double DELTA = 0.023;
 
-    @Override
-    public int getCount() {
-      return count;
-    }
+  private final ZScoreCalculator zScoreCalculator = new ZScoreCalculator(204, DIGIT_DISTRIBUTION);
 
-    @Override
-    public double[] getDigitDistribution() {
-      return DIGIT_DISTRIBUTION;
-    }
+  @Test
+  void ZScore_Series_204() {
+    double[] zScore = zScoreCalculator.calculateZscore(FIRST_DIGIT_DISTRIBUTION);
+    System.out.println(Arrays.toString(zScore));
+    Assertions.assertArrayEquals(EXPECTED_Z_SCORE, zScore, DELTA);
   }
 
   @Test
-  void ZScore_204() {
-    MockBenfordSeries mbs = new MockBenfordSeries(204);
-    ZScore zScore = mbs.getZscoreFirstDigit();
-    System.out.println(zScore);
-    Assertions.assertArrayEquals(EXPECTED_Z_SCORE, zScore.series, 0.181);
-  }
-
-  @Test
-  void ZScore_408() {
-    MockBenfordSeries mbs = new MockBenfordSeries(408);
-    ZScore zScore = mbs.getZscoreFirstDigit();
-    System.out.println(zScore);
-    Assertions.assertArrayEquals(EXPECTED_Z_SCORE, zScore.series, 2.5);
+  void ZScore() {
+    Double actual = zScoreCalculator.calculateZscore(0.431, 0.301);
+    Assertions.assertEquals(3.982, actual, DELTA);
+    System.out.println(actual);
   }
 
 }
