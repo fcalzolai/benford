@@ -6,9 +6,10 @@ import org.benford.ZScore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.io.*;
-import java.net.URL;
+import java.io.IOException;
 
+import static org.benford.factory.BenfordSeriesFactory.getBenfordSeries;
+import static org.benford.factory.BenfordSeriesFactory.getZScore;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FileLoaderTest {
@@ -47,24 +48,6 @@ public class FileLoaderTest {
     Assertions.assertArrayEquals(EXPECTED_FIBONACCI_SERIES, benfordSeries.getSeries(), 0.0);
     assertEquals(0, benfordSeries.getZscoreFirstDigit().valueNotBenfordDistributedIn95());
     assertEquals(0, benfordSeries.getZscoreFirstDigit().valueNotBenfordDistributedIn99());
-  }
-
-  private ZScore getZScore(String path, int skipLine, int column) throws IOException, CsvValidationException {
-    return getBenfordSeries(path, skipLine, column)
-            .getZscoreFirstDigit();
-  }
-
-  private BenfordSeries getBenfordSeries(String path, int skipLine, int column) throws IOException, CsvValidationException {
-    Reader reader = getReader(path);
-    FileLoader loader = new FileLoader(reader, skipLine, column);
-    return loader.createBenfordSeries();
-  }
-
-  private Reader getReader(String path) throws FileNotFoundException {
-    ClassLoader classLoader = getClass().getClassLoader();
-    URL url = classLoader.getResource(path);
-    File file = new File(url.getFile());
-    return new FileReader(file);
   }
 
 }

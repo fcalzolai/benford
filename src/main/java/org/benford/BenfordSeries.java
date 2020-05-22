@@ -5,16 +5,14 @@ import static org.benford.BenfordConst.SECOND_DIGIT_DISTRIBUTION;
 
 public class BenfordSeries extends Series {
 
-  private final ZScoreCalculator ZScoreCalculator;
-
   private double[] digitDistribution;
   private int count;
+  private ZScoreCalculator zScoreCalculator;
   private ZScore zscoreFirstDigit;
   private ZScore zscoreSecondDigit;
 
   public BenfordSeries(double[] series) {
     super(series);
-    ZScoreCalculator = new ZScoreCalculator(getCount(), getDigitDistribution());
   }
 
   public double[] getDigitDistribution() {
@@ -37,7 +35,7 @@ public class BenfordSeries extends Series {
 
   public ZScore getZscoreFirstDigit() {
     if (zscoreFirstDigit == null) {
-      double[] series = ZScoreCalculator.calculateZscore(FIRST_DIGIT_DISTRIBUTION);
+      double[] series = getZScoreCalculator().calculateZscore(FIRST_DIGIT_DISTRIBUTION);
       zscoreFirstDigit = new ZScore(series);
     }
 
@@ -46,11 +44,18 @@ public class BenfordSeries extends Series {
 
   public ZScore getZscoreSecondDigit() {
     if (zscoreSecondDigit == null) {
-      double[] series = ZScoreCalculator.calculateZscore(SECOND_DIGIT_DISTRIBUTION);
+      double[] series = getZScoreCalculator().calculateZscore(SECOND_DIGIT_DISTRIBUTION);
       zscoreSecondDigit = new ZScore(series);
     }
 
     return zscoreSecondDigit;
+  }
+
+  private ZScoreCalculator getZScoreCalculator() {
+    if (zScoreCalculator == null) {
+      zScoreCalculator = new ZScoreCalculator(getCount(), getDigitDistribution());
+    }
+    return zScoreCalculator;
   }
 
   private double[] calcDigitDistribution() {
