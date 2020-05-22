@@ -9,10 +9,12 @@ import org.junit.jupiter.api.Test;
 import java.io.*;
 import java.net.URL;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class FileLoaderTest {
 
-  private static final String PATH = "stats/WID_Data_19052020-184437.csv";
-  private static final String PATH_2 = "stats/WID_data_IT.csv";
+  private static final String WID_IT_PARTIAL = "stats/WID_Data_19052020-184437.csv";
+  private static final String WID_IT_ALL = "stats/WID_data_IT.csv";
   private static final String FIBONACCI = "stats/fibonacci_300.csv";
   private static final double[] EXPECTED_FIBONACCI_SERIES = new double[]{
           0,
@@ -29,26 +31,27 @@ public class FileLoaderTest {
 
   @Test
   void createBenfordDistribution() throws IOException, CsvValidationException {
-    ZScore zscore = getZScore(PATH, 5, 2);
+    ZScore zscore = getZScore(WID_IT_PARTIAL, 5, 2);
     System.out.println(zscore);
   }
 
   @Test
   void createBenfordDistribution2() throws IOException, CsvValidationException {
-    ZScore zscore = getZScore(PATH_2, 1, 4);
+    ZScore zscore = getZScore(WID_IT_ALL, 1, 4);
     System.out.println(zscore);
   }
 
   @Test
   void createFibonacciBenfordDistribution() throws IOException, CsvValidationException {
     BenfordSeries benfordSeries = getBenfordSeries(FIBONACCI, 0, 0);
-    double[] series = benfordSeries.getSeries();
-    Assertions.assertArrayEquals(EXPECTED_FIBONACCI_SERIES, series, 0.0);
+    Assertions.assertArrayEquals(EXPECTED_FIBONACCI_SERIES, benfordSeries.getSeries(), 0.0);
+    assertEquals(0, benfordSeries.getZscoreFirstDigit().valueNotBenfordDistributedIn95());
+    assertEquals(0, benfordSeries.getZscoreFirstDigit().valueNotBenfordDistributedIn99());
   }
 
   private ZScore getZScore(String path, int skipLine, int column) throws IOException, CsvValidationException {
-    BenfordSeries benfordDistribution = getBenfordSeries(path, skipLine, column);
-    return benfordDistribution.getZscoreFirstDigit();
+    return getBenfordSeries(path, skipLine, column)
+            .getZscoreFirstDigit();
   }
 
   private BenfordSeries getBenfordSeries(String path, int skipLine, int column) throws IOException, CsvValidationException {

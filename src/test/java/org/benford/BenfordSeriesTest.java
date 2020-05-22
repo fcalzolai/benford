@@ -6,6 +6,8 @@ import org.benford.data.WikiValues;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BenfordSeriesTest {
@@ -59,6 +61,7 @@ public class BenfordSeriesTest {
   void WikiPopulationDigitDistribution() {
     double[] digitDistribution = wiki_population.getDigitDistribution();
     Assertions.assertArrayEquals(WIKI_POPULATION.getExpectedDigitDistribution(), digitDistribution, WIKI_POPULATION.getPercentageDelta());
+    System.out.println(Arrays.toString(digitDistribution));
   }
 
   @Test

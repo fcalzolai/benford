@@ -60,7 +60,7 @@ public class BenfordSeries extends Series {
 
   private Double calculateZscore(Double actual, Double expected) {
     Double numerator = Math.abs(actual - expected);
-    Double denominator = Math.sqrt((expected * (1 - expected)) / count);
+    Double denominator = Math.sqrt((expected * (1 - expected)) / getCount());
     return numerator / denominator;
   }
 
