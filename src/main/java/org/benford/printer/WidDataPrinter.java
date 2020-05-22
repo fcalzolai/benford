@@ -17,7 +17,7 @@ import static org.benford.factory.BenfordSeriesFactory.getBenfordDataPrinters;
 public class WidDataPrinter {
 
   private static final String OUTPUT_PREFIX = "Output_";
-  private static final String SUMMARY_FILE_NAME = "Output_Summary.csv";
+  private static final String SUMMARY_FILE_NAME = "Summary.csv";
 
   private final String input;
   private final String output;
