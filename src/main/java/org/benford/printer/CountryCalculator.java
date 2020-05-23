@@ -38,7 +38,7 @@ public class CountryCalculator {
     return getInstance().countriesMap.getOrDefault(regionCode, fileName);
   }
 
-  public HashMap<String, String> calculateCountry() {
+  private HashMap<String, String> calculateCountry() {
     CSVReader csvReader = null;
     try {
       csvReader = getCsvReader();

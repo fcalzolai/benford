@@ -8,6 +8,6 @@ class CountryCalculatorTest {
   @Test
   void getCountry() {
     String expected = CountryCalculator.getCountry("WID_data_IT.csv");
-    Assertions.assertEquals("Italy", expected);
+    Assertions.assertEquals("\"Italy\"", expected);
   }
 }

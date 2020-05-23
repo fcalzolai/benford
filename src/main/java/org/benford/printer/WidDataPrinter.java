@@ -1,7 +1,7 @@
 package org.benford.printer;
 
 import com.opencsv.exceptions.CsvValidationException;
-import org.benford.zscore.ZScore;
+import org.benford.BenfordSeries;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -62,8 +62,8 @@ public class WidDataPrinter {
   }
 
   private void saveZScoreStatistic(String name, BenfordDataPrinter bdp) {
-    ZScore zScore = bdp.getBenfordSeries().getZscoreFirstDigit();
-    zscoreStats.add(new ZScorePrinter(name, zScore));
+    BenfordSeries benfordSeries = bdp.getBenfordSeries();
+    zscoreStats.add(new ZScorePrinter(name, benfordSeries));
   }
 
   private void writeToFile(String name, BenfordDataPrinter bdp) {
