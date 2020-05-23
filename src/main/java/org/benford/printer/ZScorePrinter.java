@@ -2,7 +2,7 @@ package org.benford.printer;
 
 import lombok.Getter;
 import org.benford.BenfordSeries;
-import org.benford.zscore.ZScore;
+import org.benford.score.ZScore;
 
 @Getter
 public class ZScorePrinter {

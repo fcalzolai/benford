@@ -1,7 +1,9 @@
 package org.benford;
 
-import org.benford.zscore.ZScore;
-import org.benford.zscore.ZScoreCalculator;
+import org.benford.score.ChiSquare;
+import org.benford.score.ChiSquareCalculator;
+import org.benford.score.ZScore;
+import org.benford.score.ZScoreCalculator;
 
 import static org.benford.BenfordConst.FIRST_DIGIT_DISTRIBUTION;
 import static org.benford.BenfordConst.SECOND_DIGIT_DISTRIBUTION;
@@ -11,8 +13,10 @@ public class BenfordSeries extends Series {
   private double[] digitDistribution;
   private int count;
   private ZScoreCalculator zScoreCalculator;
+  private ChiSquareCalculator chiSquareCalculator;
   private ZScore zscoreFirstDigit;
   private ZScore zscoreSecondDigit;
+  private ChiSquare chiSquareFirstDigit;
 
   public BenfordSeries(double[] series) {
     super(series);
@@ -54,11 +58,27 @@ public class BenfordSeries extends Series {
     return zscoreSecondDigit;
   }
 
+  public ChiSquare getChiSquareFirstDigit() {
+    if (chiSquareFirstDigit == null) {
+      double[] series = getChiSquareCalculator().calculateChiSquare(FIRST_DIGIT_DISTRIBUTION);
+      chiSquareFirstDigit = new ChiSquare(series);
+    }
+
+    return chiSquareFirstDigit;
+  }
+
   private ZScoreCalculator getZScoreCalculator() {
     if (zScoreCalculator == null) {
       zScoreCalculator = new ZScoreCalculator(getCount(), getDigitDistribution());
     }
     return zScoreCalculator;
+  }
+
+  private ChiSquareCalculator getChiSquareCalculator() {
+    if (chiSquareCalculator == null) {
+      chiSquareCalculator = new ChiSquareCalculator(getCount(), getDigitDistribution());
+    }
+    return chiSquareCalculator;
   }
 
   private double[] calcDigitDistribution() {

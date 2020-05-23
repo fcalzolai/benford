@@ -1,7 +1,7 @@
 package integration.load;
 
 import com.opencsv.exceptions.CsvValidationException;
-import org.benford.zscore.ZScore;
+import org.benford.score.ZScore;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

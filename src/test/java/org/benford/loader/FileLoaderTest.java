@@ -2,7 +2,7 @@ package org.benford.loader;
 
 import com.opencsv.exceptions.CsvValidationException;
 import org.benford.BenfordSeries;
-import org.benford.zscore.ZScore;
+import org.benford.score.ZScore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
