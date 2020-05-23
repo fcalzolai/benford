@@ -29,6 +29,20 @@ public class FileLoaderTest {
           17,
           14
   };
+  private static final double[] WID_IT_ZSCORE_EXPECTED = new double[]{
+          Double.NaN,
+          6.182953578,
+          19.31184951,
+          14.34452109,
+          5.652760609,
+          23.04741703,
+          20.87435699,
+          14.3563729,
+          8.905951786,
+          16.73383784,
+  };
+
+  private static final double DELTA = 0.000001;
 
   @Test
   void createBenfordDistribution() throws IOException, CsvValidationException {
@@ -39,7 +53,7 @@ public class FileLoaderTest {
   @Test
   void createBenfordDistribution2() throws IOException, CsvValidationException {
     ZScore zscore = getZScore(WID_IT_ALL, 1, 4);
-    System.out.println(zscore);
+    Assertions.assertArrayEquals(WID_IT_ZSCORE_EXPECTED, zscore.getSeries(), DELTA);
   }
 
   @Test
