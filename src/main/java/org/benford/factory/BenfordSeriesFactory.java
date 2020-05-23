@@ -53,10 +53,12 @@ public class BenfordSeriesFactory {
     HashMap<String, BenfordDataPrinter> readers = new HashMap<>();
     for (File file: files) {
       if (validateFile(file)) {
+        System.out.print("Calculating results for file: " + file.getName());
         FileReader reader = new FileReader(file);
         FileLoader loader = new FileLoader(reader, skipLine, column);
         BenfordSeries benfordSeries = loader.createBenfordSeries();
         readers.put(file.getName(), new BenfordDataPrinter(benfordSeries));
+        System.out.println(" Done");
       }
     }
     return readers;

@@ -32,11 +32,14 @@ public class WidDataPrinter {
   }
 
   public void computeData() throws IOException, CsvValidationException {
+    System.out.println("Calculating data ... ");
     HashMap<String, BenfordDataPrinter> dataPrinters = getBenfordDataPrinters(input, 1, 4);
     zscoreStats = new LinkedList<>();
     dataPrinters.forEach((name, bdp) -> {
+      System.out.print("Saving data for source file: " + name);
       saveZScoreStatistic(name, bdp);
       writeToFile(name, bdp);
+      System.out.println(" Done");
     });
 
     writeZScoreStatsToFile();
@@ -47,6 +50,7 @@ public class WidDataPrinter {
     FileWriter fw = null;
     try {
       fw = new FileWriter(newFile);
+      fw.write(ZScorePrinter.COLUMN_NAMES);
       for (ZScorePrinter zsp : zscoreStats) {
         fw.write(zsp.toCsv());
       }

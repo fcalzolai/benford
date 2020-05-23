@@ -6,6 +6,7 @@ import org.benford.zscore.ZScore;
 @Getter
 public class ZScorePrinter {
 
+  public static final String COLUMN_NAMES = "Source file, # digit not in Benford distribution 95%, # digit not in Benford distribution 99%\n";
   private static final String SEP = ",";
 
   private final String file;
