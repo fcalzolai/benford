@@ -6,7 +6,8 @@ import org.benford.zscore.ZScore;
 @Getter
 public class ZScorePrinter {
 
-  public static final String COLUMN_NAMES = "Source file, # digit not in Benford distribution 95%, # digit not in Benford distribution 99%\n";
+  public static final String COLUMN_NAMES = "Source file, Country, # digit not in Benford distribution 95%, # digit not in Benford distribution 99%\n";
+
   private static final String SEP = ",";
 
   private final String file;
@@ -21,8 +22,13 @@ public class ZScorePrinter {
 
   public String toCsv() {
     return file + SEP +
+            getCountry(file) + SEP +
             isNotBenford95 + SEP +
             isNotBenford99 +
             "\n";
+  }
+
+  private String getCountry(String file) {
+    return CountryCalculator.getCountry(file);
   }
 }
