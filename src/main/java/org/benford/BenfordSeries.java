@@ -1,11 +1,5 @@
 package org.benford;
 
-import org.benford.score.ScoreHandler;
-import org.benford.score.ZScoreCalculator;
-import org.benford.score.ZScoreResult;
-
-import static org.benford.BenfordConst.FIRST_DIGIT_DISTRIBUTION;
-
 public class BenfordSeries extends Series {
 
   private double[] digitDistribution;

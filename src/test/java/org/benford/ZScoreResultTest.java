@@ -3,7 +3,7 @@ package org.benford;
 import org.benford.score.ZScoreResult;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ZScoreResultTest {
 

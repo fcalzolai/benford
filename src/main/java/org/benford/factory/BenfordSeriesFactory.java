@@ -2,7 +2,6 @@ package org.benford.factory;
 
 import com.opencsv.exceptions.CsvValidationException;
 import org.benford.BenfordSeries;
-import org.benford.score.ScoreHandler;
 import org.benford.loader.FileLoader;
 import org.benford.printer.BenfordDataPrinter;
 
