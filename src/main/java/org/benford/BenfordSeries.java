@@ -1,8 +1,8 @@
 package org.benford;
 
-import org.benford.score.ChiSquare;
+import org.benford.score.ChiSquareResult;
 import org.benford.score.ChiSquareCalculator;
-import org.benford.score.ZScore;
+import org.benford.score.ZScoreResult;
 import org.benford.score.ZScoreCalculator;
 
 import static org.benford.BenfordConst.FIRST_DIGIT_DISTRIBUTION;
@@ -14,9 +14,9 @@ public class BenfordSeries extends Series {
   private int count;
   private ZScoreCalculator zScoreCalculator;
   private ChiSquareCalculator chiSquareCalculator;
-  private ZScore zscoreFirstDigit;
-  private ZScore zscoreSecondDigit;
-  private ChiSquare chiSquareFirstDigit;
+  private ZScoreResult zscoreFirstDigit;
+  private ZScoreResult zscoreSecondDigit;
+  private ChiSquareResult chiSquareFirstDigit;
 
   public BenfordSeries(double[] series) {
     super(series);
@@ -40,28 +40,28 @@ public class BenfordSeries extends Series {
     return count;
   }
 
-  public ZScore getZscoreFirstDigit() {
+  public ZScoreResult getZscoreFirstDigit() {
     if (zscoreFirstDigit == null) {
       double[] series = getZScoreCalculator().calculateZscore(FIRST_DIGIT_DISTRIBUTION);
-      zscoreFirstDigit = new ZScore(series);
+      zscoreFirstDigit = new ZScoreResult(series);
     }
 
     return zscoreFirstDigit;
   }
 
-  public ZScore getZscoreSecondDigit() {
+  public ZScoreResult getZscoreSecondDigit() {
     if (zscoreSecondDigit == null) {
       double[] series = getZScoreCalculator().calculateZscore(SECOND_DIGIT_DISTRIBUTION);
-      zscoreSecondDigit = new ZScore(series);
+      zscoreSecondDigit = new ZScoreResult(series);
     }
 
     return zscoreSecondDigit;
   }
 
-  public ChiSquare getChiSquareFirstDigit() {
+  public ChiSquareResult getChiSquareFirstDigit() {
     if (chiSquareFirstDigit == null) {
       double[] series = getChiSquareCalculator().calculateChiSquare(FIRST_DIGIT_DISTRIBUTION);
-      chiSquareFirstDigit = new ChiSquare(series);
+      chiSquareFirstDigit = new ChiSquareResult(series);
     }
 
     return chiSquareFirstDigit;

@@ -1,20 +1,23 @@
 package org.benford.score;
 
-import org.benford.BenfordConst;
 import org.benford.Series;
 
-public class ChiSquare extends Series {
+public abstract class ResultHandler extends Series {
 
-  public ChiSquare(double[] series) {
+  public ResultHandler(double[] series) {
     super(series);
   }
 
+  protected abstract double get95Accuracy();
+
+  protected abstract double get99Accuracy();
+
   public int valueNotBenfordDistributedIn95() {
-    return valueNotIn(BenfordConst.CHI_SQUARE_95);
+    return valueNotIn(get95Accuracy());
   }
 
   public int valueNotBenfordDistributedIn99() {
-    return valueNotIn(BenfordConst.CHI_SQUARE_99);
+    return valueNotIn(get99Accuracy());
   }
 
   private int valueNotIn(double limit) {

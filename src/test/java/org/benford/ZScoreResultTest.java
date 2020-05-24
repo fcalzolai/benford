@@ -1,13 +1,13 @@
 package org.benford;
 
-import org.benford.score.ZScore;
+import org.benford.score.ZScoreResult;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ZScoreTest {
+class ZScoreResultTest {
 
-  private static final ZScore Z_SCORE = new ZScore(new double[]{
+  private static final ZScoreResult Z_SCORE = new ZScoreResult(new double[]{
           1.769923893,
           2.379742763,
           2.586727806,

@@ -1,7 +1,7 @@
 package integration.load;
 
 import com.opencsv.exceptions.CsvValidationException;
-import org.benford.score.ZScore;
+import org.benford.score.ZScoreResult;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -15,7 +15,7 @@ public class LoadTest {
 
   @Test
   void createBenfordDistribution() throws IOException, CsvValidationException {
-    HashMap<String, ZScore> scores = getZScores(WID_FILES, 1, 4);
+    HashMap<String, ZScoreResult> scores = getZScores(WID_FILES, 1, 4);
     scores.forEach((name, zScore) -> System.out.println(name + " " + zScore.valueNotBenfordDistributedIn95() + " - " + zScore.valueNotBenfordDistributedIn99()));
   }
 

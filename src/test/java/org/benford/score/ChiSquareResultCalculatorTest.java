@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.benford.BenfordConst.FIRST_DIGIT_DISTRIBUTION;
 
-class ChiSquareCalculatorTest {
+class ChiSquareResultCalculatorTest {
 
   private static final double[] DIGIT_DISTRIBUTION = new double[]{
           0.0,

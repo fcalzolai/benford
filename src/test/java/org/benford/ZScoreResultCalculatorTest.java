@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 import static org.benford.BenfordConst.FIRST_DIGIT_DISTRIBUTION;
 
-public class ZScoreCalculatorTest {
+public class ZScoreResultCalculatorTest {
 
   /*
   * Data source: https://www.researchgate.net/publication/330695071_APPLYING_BENFORD'S_LAW_BY_TESTING_THE_GOVERNMENT_MACROECONOMICS_DATA

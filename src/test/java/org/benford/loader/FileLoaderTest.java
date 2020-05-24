@@ -2,7 +2,7 @@ package org.benford.loader;
 
 import com.opencsv.exceptions.CsvValidationException;
 import org.benford.BenfordSeries;
-import org.benford.score.ZScore;
+import org.benford.score.ZScoreResult;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -46,13 +46,13 @@ public class FileLoaderTest {
 
   @Test
   void createBenfordDistribution() throws IOException, CsvValidationException {
-    ZScore zscore = getZScore(WID_IT_PARTIAL, 5, 2);
+    ZScoreResult zscore = getZScore(WID_IT_PARTIAL, 5, 2);
     System.out.println(zscore);
   }
 
   @Test
   void createBenfordDistribution2() throws IOException, CsvValidationException {
-    ZScore zscore = getZScore(WID_IT_ALL, 1, 4);
+    ZScoreResult zscore = getZScore(WID_IT_ALL, 1, 4);
     Assertions.assertArrayEquals(WID_IT_ZSCORE_EXPECTED, zscore.getSeries(), DELTA);
   }
 

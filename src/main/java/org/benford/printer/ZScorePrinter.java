@@ -2,7 +2,7 @@ package org.benford.printer;
 
 import lombok.Getter;
 import org.benford.BenfordSeries;
-import org.benford.score.ZScore;
+import org.benford.score.ZScoreResult;
 
 @Getter
 public class ZScorePrinter {
@@ -22,7 +22,7 @@ public class ZScorePrinter {
 
   public ZScorePrinter(String file, BenfordSeries benfordSeries) {
     this.file = file;
-    ZScore zScore = benfordSeries.getZscoreFirstDigit();
+    ZScoreResult zScore = benfordSeries.getZscoreFirstDigit();
     this.totalLines = benfordSeries.getCount();
     this.isNotBenford95 = zScore.valueNotBenfordDistributedIn95();
     this.isNotBenford99 = zScore.valueNotBenfordDistributedIn99();

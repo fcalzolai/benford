@@ -4,7 +4,7 @@ import org.benford.data.AimcValues;
 import org.benford.data.MunicipalityValues;
 import org.benford.data.WikiPopulationValues;
 import org.benford.data.WikiValues;
-import org.benford.score.ZScore;
+import org.benford.score.ZScoreResult;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -42,7 +42,7 @@ public class BenfordSeriesTest {
 
   @Test
   void aiimcZscoreSecondDigit() {
-    ZScore digitDistribution = aimc.getZscoreSecondDigit();
+    ZScoreResult digitDistribution = aimc.getZscoreSecondDigit();
     Assertions.assertArrayEquals(AIMC.getExpectedZScore(), digitDistribution.series, AIMC.getZScoreDelta());
   }
 
@@ -54,7 +54,7 @@ public class BenfordSeriesTest {
 
   @Test
   void wikiRiverZScoreDistribution() {
-    ZScore zScore = wiki_river.getZscoreFirstDigit();
+    ZScoreResult zScore = wiki_river.getZscoreFirstDigit();
     assertEquals(1, zScore.valueNotBenfordDistributedIn95());
     assertEquals(0, zScore.valueNotBenfordDistributedIn99());
   }
@@ -67,7 +67,7 @@ public class BenfordSeriesTest {
 
   @Test
   void wikiPopulationZScoreDistribution() {
-    ZScore zScore = wiki_population.getZscoreFirstDigit();
+    ZScoreResult zScore = wiki_population.getZscoreFirstDigit();
     assertEquals(0, zScore.valueNotBenfordDistributedIn95());
     assertEquals(0, zScore.valueNotBenfordDistributedIn99());
   }
@@ -80,7 +80,7 @@ public class BenfordSeriesTest {
 
   @Test
   void WikiPopulationZScoreDistribution() {
-    ZScore zScore = municipality.getZscoreFirstDigit();
+    ZScoreResult zScore = municipality.getZscoreFirstDigit();
     assertEquals(2, zScore.valueNotBenfordDistributedIn95());
     assertEquals(1, zScore.valueNotBenfordDistributedIn99());
   }
