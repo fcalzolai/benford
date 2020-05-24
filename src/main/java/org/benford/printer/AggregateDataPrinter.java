@@ -7,7 +7,7 @@ import org.benford.score.ResultHandler;
 import org.benford.score.ZScoreCalculator;
 
 @Getter
-public class ZScorePrinter {
+public class AggregateDataPrinter {
 
   public static final String COLUMN_NAMES = "Source file, " +
           "Country, " +
@@ -22,7 +22,7 @@ public class ZScorePrinter {
   private final int isNotBenford99;
   private final int totalLines;
 
-  public ZScorePrinter(String file, BenfordSeries benfordSeries) {
+  public AggregateDataPrinter(String file, BenfordSeries benfordSeries) {
     this.file = file;
     ResultHandler handler = getResultHandler(benfordSeries);
     this.totalLines = benfordSeries.getCount();

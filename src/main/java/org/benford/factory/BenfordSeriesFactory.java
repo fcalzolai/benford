@@ -13,20 +13,6 @@ public class BenfordSeriesFactory {
 
   private static final String INPUT_FILE_EXTENSION = ".csv";
 
-  public static BenfordSeries getBenfordSeries(String path, int skipLine, int column)
-          throws IOException, CsvValidationException {
-    Reader reader = getReader(path);
-    FileLoader loader = new FileLoader(reader, skipLine, column);
-    return loader.createBenfordSeries();
-  }
-
-  public static Reader getReader(String path) throws FileNotFoundException {
-    ClassLoader classLoader = BenfordSeriesFactory.class.getClassLoader();
-    URL url = classLoader.getResource(path);
-    File file = new File(url.getFile());
-    return new FileReader(file);
-  }
-
   public static HashMap<String, BenfordDataPrinter> getBenfordDataPrinters(String path, int skipLine, int column)
           throws IOException, CsvValidationException {
     ClassLoader classLoader = BenfordSeriesFactory.class.getClassLoader();

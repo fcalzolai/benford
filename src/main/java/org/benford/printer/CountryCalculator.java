@@ -72,7 +72,7 @@ public class CountryCalculator {
   }
 
   private CSVReader getCsvReader() throws FileNotFoundException {
-    URL url = ZScorePrinter.class.getClassLoader().getResource(COUNTRIES_FILE);
+    URL url = AggregateDataPrinter.class.getClassLoader().getResource(COUNTRIES_FILE);
 
     CSVParser parser = new CSVParserBuilder()
             .withSeparator(';')

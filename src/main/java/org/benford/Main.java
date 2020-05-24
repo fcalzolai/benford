@@ -1,7 +1,7 @@
 package org.benford;
 
 import com.opencsv.exceptions.CsvValidationException;
-import org.benford.printer.WidDataPrinter;
+import org.benford.printer.MultipleFilesDataPrinter;
 
 import java.io.IOException;
 
@@ -11,7 +11,7 @@ public class Main {
   private static final String OUTPUT_WID_FILES = "output";
 
   public static void main(String[] args) throws IOException, CsvValidationException {
-    WidDataPrinter wdp = new WidDataPrinter(INPUT_WID_FILES, OUTPUT_WID_FILES);
+    MultipleFilesDataPrinter wdp = new MultipleFilesDataPrinter(INPUT_WID_FILES, OUTPUT_WID_FILES);
     wdp.computeData();
   }
 }

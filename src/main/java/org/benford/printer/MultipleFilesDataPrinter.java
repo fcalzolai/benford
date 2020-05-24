@@ -14,18 +14,18 @@ import java.util.LinkedList;
 import static java.io.File.separator;
 import static org.benford.factory.BenfordSeriesFactory.getBenfordDataPrinters;
 
-public class WidDataPrinter {
+public class MultipleFilesDataPrinter {
 
   private static final String OUTPUT_PREFIX = "Output_";
   private static final String SUMMARY_FILE_NAME = "Summary.csv";
 
   private final String input;
   private final String output;
-  private LinkedList<ZScorePrinter> zscoreStats;
+  private LinkedList<AggregateDataPrinter> aggregateDataPrinters;
 
-  public WidDataPrinter(String input, String output) throws IOException {
+  public MultipleFilesDataPrinter(String input, String output) throws IOException {
     this.input = input;
-    ClassLoader classLoader = WidDataPrinter.class.getClassLoader();
+    ClassLoader classLoader = MultipleFilesDataPrinter.class.getClassLoader();
     String inputPath = classLoader.getResource(input).getPath();
     this.output = Paths.get(inputPath).toAbsolutePath() + separator + output + separator;
     Files.createDirectories(Paths.get(this.output));
@@ -34,24 +34,24 @@ public class WidDataPrinter {
   public void computeData() throws IOException, CsvValidationException {
     System.out.println("Calculating data ... ");
     HashMap<String, BenfordDataPrinter> dataPrinters = getBenfordDataPrinters(input, 1, 4);
-    zscoreStats = new LinkedList<>();
+    aggregateDataPrinters = new LinkedList<>();
     dataPrinters.forEach((name, bdp) -> {
       System.out.print("Saving data for source file: " + name);
-      saveZScoreStatistic(name, bdp);
+      saveAggregateData(name, bdp);
       writeToFile(name, bdp);
       System.out.println(" Done");
     });
 
-    writeZScoreStatsToFile();
+    writeAggregateDataToFile();
   }
 
-  private void writeZScoreStatsToFile() {
+  private void writeAggregateDataToFile() {
     File newFile = new File(output + OUTPUT_PREFIX + SUMMARY_FILE_NAME);
     FileWriter fw = null;
     try {
       fw = new FileWriter(newFile);
-      fw.write(ZScorePrinter.COLUMN_NAMES);
-      for (ZScorePrinter zsp : zscoreStats) {
+      fw.write(AggregateDataPrinter.COLUMN_NAMES);
+      for (AggregateDataPrinter zsp : aggregateDataPrinters) {
         fw.write(zsp.toCsv());
       }
     } catch (IOException e) {
@@ -61,9 +61,9 @@ public class WidDataPrinter {
     }
   }
 
-  private void saveZScoreStatistic(String name, BenfordDataPrinter bdp) {
+  private void saveAggregateData(String name, BenfordDataPrinter bdp) {
     BenfordSeries benfordSeries = bdp.getBenfordSeries();
-    zscoreStats.add(new ZScorePrinter(name, benfordSeries));
+    aggregateDataPrinters.add(new AggregateDataPrinter(name, benfordSeries));
   }
 
   private void writeToFile(String name, BenfordDataPrinter bdp) {

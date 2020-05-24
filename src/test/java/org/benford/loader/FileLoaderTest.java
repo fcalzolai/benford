@@ -3,14 +3,15 @@ package org.benford.loader;
 import com.opencsv.exceptions.CsvValidationException;
 import org.benford.BenfordConst;
 import org.benford.BenfordSeries;
+import org.benford.factory.BenfordSeriesFactory;
 import org.benford.score.ResultHandler;
 import org.benford.score.ZScoreCalculator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
+import java.io.*;
+import java.net.URL;
 
-import static org.benford.factory.BenfordSeriesFactory.getBenfordSeries;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FileLoaderTest {
@@ -71,6 +72,20 @@ public class FileLoaderTest {
     BenfordSeries benfordSeries = getBenfordSeries(path, skipLine, column);
     ZScoreCalculator calculator = new ZScoreCalculator(benfordSeries);
     return calculator.calculateResult(BenfordConst.FIRST_DIGIT_DISTRIBUTION);
+  }
+
+  private static BenfordSeries getBenfordSeries(String path, int skipLine, int column)
+          throws IOException, CsvValidationException {
+    Reader reader = getReader(path);
+    FileLoader loader = new FileLoader(reader, skipLine, column);
+    return loader.createBenfordSeries();
+  }
+
+  private static Reader getReader(String path) throws FileNotFoundException {
+    ClassLoader classLoader = BenfordSeriesFactory.class.getClassLoader();
+    URL url = classLoader.getResource(path);
+    File file = new File(url.getFile());
+    return new FileReader(file);
   }
 
 }
