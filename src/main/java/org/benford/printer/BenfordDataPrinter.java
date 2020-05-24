@@ -38,7 +38,7 @@ public class BenfordDataPrinter {
     double[] series = benfordSeries.getSeries();
     double[] digitDistribution = benfordSeries.getDigitDistribution();
     double[] firstDigitDistribution = BenfordConst.FIRST_DIGIT_DISTRIBUTION;
-    double[] zscoreFirstDigit = getFirstDigitDistribution(firstDigitDistribution);
+    double[] zscoreFirstDigit = getZScoreFirstDigitDistribution(firstDigitDistribution);
 
     for (int i = 0; i < series.length; i++) {
       builder.append(i).append(sep)
@@ -52,7 +52,7 @@ public class BenfordDataPrinter {
     return builder.toString();
   }
 
-  private double[] getFirstDigitDistribution(double[] firstDigitDistribution) {
+  private double[] getZScoreFirstDigitDistribution(double[] firstDigitDistribution) {
     ZScoreCalculator calculator = new ZScoreCalculator(benfordSeries);
     ResultHandler resultHandler = calculator.calculateResult(firstDigitDistribution);
     return resultHandler.getSeries();

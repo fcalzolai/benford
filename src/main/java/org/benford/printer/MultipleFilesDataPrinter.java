@@ -37,8 +37,8 @@ public class MultipleFilesDataPrinter {
     aggregateDataPrinters = new LinkedList<>();
     dataPrinters.forEach((name, bdp) -> {
       System.out.print("Saving data for source file: " + name);
+      writeResultToFile(name, bdp);
       saveAggregateData(name, bdp);
-      writeToFile(name, bdp);
       System.out.println(" Done");
     });
 
@@ -66,7 +66,7 @@ public class MultipleFilesDataPrinter {
     aggregateDataPrinters.add(new AggregateDataPrinter(name, benfordSeries));
   }
 
-  private void writeToFile(String name, BenfordDataPrinter bdp) {
+  private void writeResultToFile(String name, BenfordDataPrinter bdp) {
     File newFile = new File(output + name);
     FileWriter fw = null;
     try {

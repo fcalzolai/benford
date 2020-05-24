@@ -4,10 +4,19 @@ import com.opencsv.exceptions.CsvValidationException;
 import org.benford.BenfordSeries;
 import org.benford.loader.FileLoader;
 import org.benford.printer.BenfordDataPrinter;
+import org.benford.score.Calculator;
+import org.benford.score.ChiSquareCalculator;
+import org.benford.score.ZScoreCalculator;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.URL;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Function;
 
 public class BenfordSeriesFactory {
 
@@ -30,6 +39,15 @@ public class BenfordSeriesFactory {
       }
     }
     return readers;
+  }
+
+  public static Function<BenfordSeries, Collection<Calculator>> getCalculatorProducer() {
+    return (BenfordSeries bn) -> {
+      Set<Calculator> calculators = new HashSet<>();
+      calculators.add(new ZScoreCalculator(bn));
+      calculators.add(new ChiSquareCalculator(bn));
+      return calculators;
+    } ;
   }
 
   public static boolean validateFile(File file) {
