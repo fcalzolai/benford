@@ -4,7 +4,7 @@ import com.opencsv.exceptions.CsvValidationException;
 import org.benford.BenfordSeries;
 import org.benford.factory.BenfordSeriesFactory;
 import org.benford.loader.FileLoader;
-import org.benford.score.ScoreHandler;
+import org.benford.score.ResultHandler;
 import org.benford.score.ZScoreCalculator;
 import org.junit.jupiter.api.Test;
 
@@ -23,25 +23,25 @@ public class LoadTest {
 
   @Test
   void createBenfordDistribution() throws IOException, CsvValidationException {
-    HashMap<String, ScoreHandler> scores = getZScores(WID_FILES, 1, 4);
+    HashMap<String, ResultHandler> scores = getZScores(WID_FILES, 1, 4);
     scores.forEach((name, zScore) -> System.out.println(name + " " +
             zScore.valueNotBenfordDistributedIn95() + " - " +
             zScore.valueNotBenfordDistributedIn99()));
   }
 
-  private static HashMap<String, ScoreHandler> getZScores(String path, int skipLine, int column)
+  private static HashMap<String, ResultHandler> getZScores(String path, int skipLine, int column)
           throws IOException, CsvValidationException {
     ClassLoader classLoader = BenfordSeriesFactory.class.getClassLoader();
     URL url = classLoader.getResource(path);
     File[] files = new File(url.getFile()).listFiles();
-    HashMap<String, ScoreHandler> readers = new HashMap<>();
+    HashMap<String, ResultHandler> readers = new HashMap<>();
     for (File file : files) {
       if (validateFile(file)) {
         FileReader reader = new FileReader(file);
         FileLoader loader = new FileLoader(reader, skipLine, column);
         BenfordSeries benfordSeries = loader.createBenfordSeries();
         ZScoreCalculator calculator = new ZScoreCalculator(benfordSeries);
-        readers.put(file.getName(), calculator.getScoreHandler(FIRST_DIGIT_DISTRIBUTION));
+        readers.put(file.getName(), calculator.calculateResult(FIRST_DIGIT_DISTRIBUTION));
       }
     }
     return readers;

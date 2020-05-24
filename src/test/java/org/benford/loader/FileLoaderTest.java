@@ -3,7 +3,7 @@ package org.benford.loader;
 import com.opencsv.exceptions.CsvValidationException;
 import org.benford.BenfordConst;
 import org.benford.BenfordSeries;
-import org.benford.score.ScoreHandler;
+import org.benford.score.ResultHandler;
 import org.benford.score.ZScoreCalculator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -47,13 +47,13 @@ public class FileLoaderTest {
 
   @Test
   void createBenfordDistribution() throws IOException, CsvValidationException {
-    ScoreHandler score = getZScore(WID_IT_PARTIAL, 5, 2);
+    ResultHandler score = getZScore(WID_IT_PARTIAL, 5, 2);
     System.out.println(score);
   }
 
   @Test
   void createBenfordDistribution2() throws IOException, CsvValidationException {
-    ScoreHandler score = getZScore(WID_IT_ALL, 1, 4);
+    ResultHandler score = getZScore(WID_IT_ALL, 1, 4);
     Assertions.assertArrayEquals(WID_IT_ZSCORE_EXPECTED, score.getSeries(), DELTA);
   }
 
@@ -61,16 +61,16 @@ public class FileLoaderTest {
   void createFibonacciBenfordDistribution() throws IOException, CsvValidationException {
     BenfordSeries benfordSeries = getBenfordSeries(FIBONACCI, 0, 0);
     ZScoreCalculator calculator = new ZScoreCalculator(benfordSeries);
-    ScoreHandler scoreHandler = calculator.getScoreHandler(BenfordConst.FIRST_DIGIT_DISTRIBUTION);
+    ResultHandler resultHandler = calculator.calculateResult(BenfordConst.FIRST_DIGIT_DISTRIBUTION);
     Assertions.assertArrayEquals(EXPECTED_FIBONACCI_SERIES, benfordSeries.getSeries(), 0.0);
-    assertEquals(0, scoreHandler.valueNotBenfordDistributedIn95());
-    assertEquals(0, scoreHandler.valueNotBenfordDistributedIn99());
+    assertEquals(0, resultHandler.valueNotBenfordDistributedIn95());
+    assertEquals(0, resultHandler.valueNotBenfordDistributedIn99());
   }
 
-  private static ScoreHandler getZScore(String path, int skipLine, int column) throws IOException, CsvValidationException {
+  private static ResultHandler getZScore(String path, int skipLine, int column) throws IOException, CsvValidationException {
     BenfordSeries benfordSeries = getBenfordSeries(path, skipLine, column);
     ZScoreCalculator calculator = new ZScoreCalculator(benfordSeries);
-    return calculator.getScoreHandler(BenfordConst.FIRST_DIGIT_DISTRIBUTION);
+    return calculator.calculateResult(BenfordConst.FIRST_DIGIT_DISTRIBUTION);
   }
 
 }

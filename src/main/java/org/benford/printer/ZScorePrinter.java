@@ -3,7 +3,7 @@ package org.benford.printer;
 import lombok.Getter;
 import org.benford.BenfordConst;
 import org.benford.BenfordSeries;
-import org.benford.score.ScoreHandler;
+import org.benford.score.ResultHandler;
 import org.benford.score.ZScoreCalculator;
 
 @Getter
@@ -24,7 +24,7 @@ public class ZScorePrinter {
 
   public ZScorePrinter(String file, BenfordSeries benfordSeries) {
     this.file = file;
-    ScoreHandler handler = getScoreHandler(benfordSeries);
+    ResultHandler handler = getResultHandler(benfordSeries);
     this.totalLines = benfordSeries.getCount();
     this.isNotBenford95 = handler.valueNotBenfordDistributedIn95();
     this.isNotBenford99 = handler.valueNotBenfordDistributedIn99();
@@ -43,8 +43,8 @@ public class ZScorePrinter {
     return CountryCalculator.getCountry(file);
   }
 
-  private ScoreHandler getScoreHandler(BenfordSeries benfordSeries) {
+  private ResultHandler getResultHandler(BenfordSeries benfordSeries) {
     ZScoreCalculator calculator = new ZScoreCalculator(benfordSeries);
-    return calculator.getScoreHandler(BenfordConst.FIRST_DIGIT_DISTRIBUTION);
+    return calculator.calculateResult(BenfordConst.FIRST_DIGIT_DISTRIBUTION);
   }
 }

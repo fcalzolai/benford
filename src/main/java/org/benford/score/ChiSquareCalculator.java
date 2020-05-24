@@ -13,7 +13,7 @@ public class ChiSquareCalculator extends Calculator {
   }
 
   @Override
-  protected ScoreHandler createScoreHandler(double[] score) {
+  protected ResultHandler createScoreHandler(double[] score) {
     return new ChiSquareResult(score);
   }
 

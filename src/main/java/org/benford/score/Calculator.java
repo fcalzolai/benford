@@ -19,11 +19,11 @@ public abstract class Calculator {
     this(benfordSeries.getDigitDistribution(), benfordSeries.getCount());
   }
 
-  abstract ScoreHandler createScoreHandler(double[] score);
+  abstract ResultHandler createScoreHandler(double[] score);
 
   abstract Double calculateScore(Double actual, Double expected);
 
-  public ScoreHandler getScoreHandler(double[] expected) {
+  public ResultHandler calculateResult(double[] expected) {
     double[] score = new double[10];
 
     for (int i = 0; i < digitDistribution.length; i++) {

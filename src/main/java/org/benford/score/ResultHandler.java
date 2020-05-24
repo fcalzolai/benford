@@ -2,9 +2,9 @@ package org.benford.score;
 
 import org.benford.Series;
 
-public abstract class ScoreHandler extends Series {
+public abstract class ResultHandler extends Series {
 
-  public ScoreHandler(double[] series) {
+  public ResultHandler(double[] series) {
     super(series);
   }
 

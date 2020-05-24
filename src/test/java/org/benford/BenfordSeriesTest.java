@@ -4,7 +4,7 @@ import org.benford.data.AimcValues;
 import org.benford.data.MunicipalityValues;
 import org.benford.data.WikiPopulationValues;
 import org.benford.data.WikiValues;
-import org.benford.score.ScoreHandler;
+import org.benford.score.ResultHandler;
 import org.benford.score.ZScoreCalculator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -46,8 +46,8 @@ public class BenfordSeriesTest {
   @Test
   void aiimcZscoreSecondDigit() {
     ZScoreCalculator calculator = new ZScoreCalculator(aimc);
-    ScoreHandler scoreHandler = calculator.getScoreHandler(SECOND_DIGIT_DISTRIBUTION);
-    Assertions.assertArrayEquals(AIMC.getExpectedZScore(), scoreHandler.getSeries(), AIMC.getZScoreDelta());
+    ResultHandler resultHandler = calculator.calculateResult(SECOND_DIGIT_DISTRIBUTION);
+    Assertions.assertArrayEquals(AIMC.getExpectedZScore(), resultHandler.getSeries(), AIMC.getZScoreDelta());
   }
 
   @Test
@@ -59,7 +59,7 @@ public class BenfordSeriesTest {
   @Test
   void wikiRiverZScoreDistribution() {
     ZScoreCalculator calculator = new ZScoreCalculator(wiki_river);
-    ScoreHandler zScore = calculator.getScoreHandler(FIRST_DIGIT_DISTRIBUTION);
+    ResultHandler zScore = calculator.calculateResult(FIRST_DIGIT_DISTRIBUTION);
     assertEquals(1, zScore.valueNotBenfordDistributedIn95());
     assertEquals(0, zScore.valueNotBenfordDistributedIn99());
   }
@@ -73,7 +73,7 @@ public class BenfordSeriesTest {
   @Test
   void wikiPopulationZScoreDistribution() {
     ZScoreCalculator calculator = new ZScoreCalculator(wiki_population);
-    ScoreHandler zScore = calculator.getScoreHandler(FIRST_DIGIT_DISTRIBUTION);
+    ResultHandler zScore = calculator.calculateResult(FIRST_DIGIT_DISTRIBUTION);
     assertEquals(0, zScore.valueNotBenfordDistributedIn95());
     assertEquals(0, zScore.valueNotBenfordDistributedIn99());
   }
@@ -87,7 +87,7 @@ public class BenfordSeriesTest {
   @Test
   void WikiPopulationZScoreDistribution() {
     ZScoreCalculator calculator = new ZScoreCalculator(municipality);
-    ScoreHandler zScore = calculator.getScoreHandler(FIRST_DIGIT_DISTRIBUTION);
+    ResultHandler zScore = calculator.calculateResult(FIRST_DIGIT_DISTRIBUTION);
     assertEquals(2, zScore.valueNotBenfordDistributedIn95());
     assertEquals(1, zScore.valueNotBenfordDistributedIn99());
   }

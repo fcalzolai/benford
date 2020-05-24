@@ -47,7 +47,7 @@ class ChiSquareResultCalculatorTest {
 
   @Test
   void testCalculateChiSquare() {
-    ScoreHandler res = CHI_SQUARE_CALCULATOR.getScoreHandler(FIRST_DIGIT_DISTRIBUTION);
+    ResultHandler res = CHI_SQUARE_CALCULATOR.calculateResult(FIRST_DIGIT_DISTRIBUTION);
     Assertions.assertArrayEquals(EXPECTED_CHI_SQUARE, res.getSeries(), DELTA);
   }
 }

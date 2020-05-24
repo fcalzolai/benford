@@ -3,7 +3,7 @@ package org.benford.printer;
 import lombok.Getter;
 import org.benford.BenfordConst;
 import org.benford.BenfordSeries;
-import org.benford.score.ScoreHandler;
+import org.benford.score.ResultHandler;
 import org.benford.score.ZScoreCalculator;
 
 @Getter
@@ -54,7 +54,7 @@ public class BenfordDataPrinter {
 
   private double[] getFirstDigitDistribution(double[] firstDigitDistribution) {
     ZScoreCalculator calculator = new ZScoreCalculator(benfordSeries);
-    ScoreHandler scoreHandler = calculator.getScoreHandler(firstDigitDistribution);
-    return scoreHandler.getSeries();
+    ResultHandler resultHandler = calculator.calculateResult(firstDigitDistribution);
+    return resultHandler.getSeries();
   }
 }
