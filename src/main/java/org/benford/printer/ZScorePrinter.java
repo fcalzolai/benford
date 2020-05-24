@@ -1,8 +1,10 @@
 package org.benford.printer;
 
 import lombok.Getter;
+import org.benford.BenfordConst;
 import org.benford.BenfordSeries;
-import org.benford.score.ZScoreResult;
+import org.benford.score.ScoreHandler;
+import org.benford.score.ZScoreCalculator;
 
 @Getter
 public class ZScorePrinter {
@@ -22,10 +24,10 @@ public class ZScorePrinter {
 
   public ZScorePrinter(String file, BenfordSeries benfordSeries) {
     this.file = file;
-    ZScoreResult zScore = benfordSeries.getZscoreFirstDigit();
+    ScoreHandler handler = getScoreHandler(benfordSeries);
     this.totalLines = benfordSeries.getCount();
-    this.isNotBenford95 = zScore.valueNotBenfordDistributedIn95();
-    this.isNotBenford99 = zScore.valueNotBenfordDistributedIn99();
+    this.isNotBenford95 = handler.valueNotBenfordDistributedIn95();
+    this.isNotBenford99 = handler.valueNotBenfordDistributedIn99();
   }
 
   public String toCsv() {
@@ -39,5 +41,10 @@ public class ZScorePrinter {
 
   private String getCountry(String file) {
     return CountryCalculator.getCountry(file);
+  }
+
+  private ScoreHandler getScoreHandler(BenfordSeries benfordSeries) {
+    ZScoreCalculator calculator = new ZScoreCalculator(benfordSeries);
+    return calculator.getScoreHandler(BenfordConst.FIRST_DIGIT_DISTRIBUTION);
   }
 }

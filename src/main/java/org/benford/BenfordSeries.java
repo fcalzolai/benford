@@ -10,8 +10,6 @@ public class BenfordSeries extends Series {
 
   private double[] digitDistribution;
   private int count;
-  private ZScoreCalculator zScoreCalculator;
-  private ZScoreResult zscoreFirstDigit;
 
   public BenfordSeries(double[] series) {
     super(series);
@@ -33,22 +31,6 @@ public class BenfordSeries extends Series {
     }
 
     return count;
-  }
-
-  public ZScoreResult getZscoreFirstDigit() {
-    if (zscoreFirstDigit == null) {
-      ScoreHandler result = getZScoreCalculator().getScoreHandler(FIRST_DIGIT_DISTRIBUTION);
-      zscoreFirstDigit = new ZScoreResult(result.getSeries());
-    }
-
-    return zscoreFirstDigit;
-  }
-
-  private ZScoreCalculator getZScoreCalculator() {
-    if (zScoreCalculator == null) {
-      zScoreCalculator = new ZScoreCalculator(getCount(), getDigitDistribution());
-    }
-    return zScoreCalculator;
   }
 
   private double[] calcDigitDistribution() {
