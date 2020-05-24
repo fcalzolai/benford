@@ -1,22 +1,17 @@
 package org.benford;
 
-import org.benford.score.ChiSquareResult;
-import org.benford.score.ChiSquareCalculator;
-import org.benford.score.ZScoreResult;
+import org.benford.score.ScoreHandler;
 import org.benford.score.ZScoreCalculator;
+import org.benford.score.ZScoreResult;
 
 import static org.benford.BenfordConst.FIRST_DIGIT_DISTRIBUTION;
-import static org.benford.BenfordConst.SECOND_DIGIT_DISTRIBUTION;
 
 public class BenfordSeries extends Series {
 
   private double[] digitDistribution;
   private int count;
   private ZScoreCalculator zScoreCalculator;
-  private ChiSquareCalculator chiSquareCalculator;
   private ZScoreResult zscoreFirstDigit;
-  private ZScoreResult zscoreSecondDigit;
-  private ChiSquareResult chiSquareFirstDigit;
 
   public BenfordSeries(double[] series) {
     super(series);
@@ -42,29 +37,11 @@ public class BenfordSeries extends Series {
 
   public ZScoreResult getZscoreFirstDigit() {
     if (zscoreFirstDigit == null) {
-      double[] series = getZScoreCalculator().calculateZscore(FIRST_DIGIT_DISTRIBUTION);
-      zscoreFirstDigit = new ZScoreResult(series);
+      ScoreHandler result = getZScoreCalculator().getScoreHandler(FIRST_DIGIT_DISTRIBUTION);
+      zscoreFirstDigit = new ZScoreResult(result.getSeries());
     }
 
     return zscoreFirstDigit;
-  }
-
-  public ZScoreResult getZscoreSecondDigit() {
-    if (zscoreSecondDigit == null) {
-      double[] series = getZScoreCalculator().calculateZscore(SECOND_DIGIT_DISTRIBUTION);
-      zscoreSecondDigit = new ZScoreResult(series);
-    }
-
-    return zscoreSecondDigit;
-  }
-
-  public ChiSquareResult getChiSquareFirstDigit() {
-    if (chiSquareFirstDigit == null) {
-      double[] series = getChiSquareCalculator().calculateChiSquare(FIRST_DIGIT_DISTRIBUTION);
-      chiSquareFirstDigit = new ChiSquareResult(series);
-    }
-
-    return chiSquareFirstDigit;
   }
 
   private ZScoreCalculator getZScoreCalculator() {
@@ -72,13 +49,6 @@ public class BenfordSeries extends Series {
       zScoreCalculator = new ZScoreCalculator(getCount(), getDigitDistribution());
     }
     return zScoreCalculator;
-  }
-
-  private ChiSquareCalculator getChiSquareCalculator() {
-    if (chiSquareCalculator == null) {
-      chiSquareCalculator = new ChiSquareCalculator(getCount(), getDigitDistribution());
-    }
-    return chiSquareCalculator;
   }
 
   private double[] calcDigitDistribution() {

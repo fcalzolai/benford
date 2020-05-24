@@ -35,18 +35,19 @@ class ChiSquareResultCalculatorTest {
 
   private static final int COUNT = 1453;
 
-  private static final ChiSquareCalculator OUT = new ChiSquareCalculator(COUNT, DIGIT_DISTRIBUTION);
+  private static final ChiSquareCalculator CHI_SQUARE_CALCULATOR = new ChiSquareCalculator(COUNT, DIGIT_DISTRIBUTION);
+
   private static final Double DELTA = 0.0001;
 
   @Test
   void calculateChiSquare() {
-    Double chiSquare = OUT.calculateChiSquare(DIGIT_DISTRIBUTION[1], FIRST_DIGIT_DISTRIBUTION[1]);
+    Double chiSquare = CHI_SQUARE_CALCULATOR.calculateScore(DIGIT_DISTRIBUTION[1], FIRST_DIGIT_DISTRIBUTION[1]);
     Assertions.assertEquals(0.4103109803, chiSquare, DELTA);
   }
 
   @Test
   void testCalculateChiSquare() {
-    double[] actual_chi = OUT.calculateChiSquare(FIRST_DIGIT_DISTRIBUTION);
-    Assertions.assertArrayEquals(EXPECTED_CHI_SQUARE, actual_chi, DELTA);
+    ScoreHandler res = CHI_SQUARE_CALCULATOR.getScoreHandler(FIRST_DIGIT_DISTRIBUTION);
+    Assertions.assertArrayEquals(EXPECTED_CHI_SQUARE, res.getSeries(), DELTA);
   }
 }

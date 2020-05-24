@@ -2,7 +2,7 @@ package org.benford.score;
 
 import org.benford.BenfordConst;
 
-public class ZScoreResult extends ResultHandler {
+public class ZScoreResult extends ScoreHandler {
 
   public ZScoreResult(double[] series) {
     super(series);

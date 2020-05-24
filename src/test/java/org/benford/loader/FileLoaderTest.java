@@ -1,7 +1,10 @@
 package org.benford.loader;
 
 import com.opencsv.exceptions.CsvValidationException;
+import org.benford.BenfordConst;
 import org.benford.BenfordSeries;
+import org.benford.score.ScoreHandler;
+import org.benford.score.ZScoreCalculator;
 import org.benford.score.ZScoreResult;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -59,9 +62,11 @@ public class FileLoaderTest {
   @Test
   void createFibonacciBenfordDistribution() throws IOException, CsvValidationException {
     BenfordSeries benfordSeries = getBenfordSeries(FIBONACCI, 0, 0);
+    ZScoreCalculator calculator = new ZScoreCalculator(benfordSeries);
+    ScoreHandler scoreHandler = calculator.getScoreHandler(BenfordConst.FIRST_DIGIT_DISTRIBUTION);
     Assertions.assertArrayEquals(EXPECTED_FIBONACCI_SERIES, benfordSeries.getSeries(), 0.0);
-    assertEquals(0, benfordSeries.getZscoreFirstDigit().valueNotBenfordDistributedIn95());
-    assertEquals(0, benfordSeries.getZscoreFirstDigit().valueNotBenfordDistributedIn99());
+    assertEquals(0, scoreHandler.valueNotBenfordDistributedIn95());
+    assertEquals(0, scoreHandler.valueNotBenfordDistributedIn99());
   }
 
 }

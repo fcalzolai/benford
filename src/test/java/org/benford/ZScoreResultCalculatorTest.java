@@ -1,5 +1,6 @@
 package org.benford;
 
+import org.benford.score.ScoreHandler;
 import org.benford.score.ZScoreCalculator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -46,14 +47,14 @@ public class ZScoreResultCalculatorTest {
 
   @Test
   void ZScore_Series_204() {
-    double[] zScore = zScoreCalculator.calculateZscore(FIRST_DIGIT_DISTRIBUTION);
-    System.out.println(Arrays.toString(zScore));
-    Assertions.assertArrayEquals(EXPECTED_Z_SCORE, zScore, DELTA);
+    ScoreHandler res = zScoreCalculator.getScoreHandler(FIRST_DIGIT_DISTRIBUTION);
+    System.out.println(Arrays.toString(res.getSeries()));
+    Assertions.assertArrayEquals(EXPECTED_Z_SCORE, res.getSeries(), DELTA);
   }
 
   @Test
   void ZScore() {
-    Double actual = zScoreCalculator.calculateZscore(0.431, 0.301);
+    Double actual = zScoreCalculator.calculateScore(0.431, 0.301);
     Assertions.assertEquals(3.982, actual, DELTA);
     System.out.println(actual);
   }

@@ -1,26 +1,24 @@
 package org.benford.score;
 
-public class ChiSquareCalculator {
+import org.benford.BenfordSeries;
 
-  private final double[] digitDistributioin;
-  private final int count;
+public class ChiSquareCalculator extends Calculator {
 
-  public ChiSquareCalculator(int count, double[] digitDistributioin) {
-    this.count = count;
-    this.digitDistributioin = digitDistributioin;
+  public ChiSquareCalculator(int count, double[] digitDistribution) {
+    super(digitDistribution, count);
   }
 
-  public double[] calculateChiSquare(double[] expected) {
-    double[] chiSquare = new double[10];
-
-    for (int i = 0; i < digitDistributioin.length; i++) {
-      chiSquare[i] = calculateChiSquare(digitDistributioin[i], expected[i]);
-    }
-
-    return chiSquare;
+  public ChiSquareCalculator(BenfordSeries benfordSeries) {
+    super(benfordSeries);
   }
 
-  public Double calculateChiSquare(Double actual, Double expected) {
+  @Override
+  protected ScoreHandler createScoreHandler(double[] score) {
+    return new ChiSquareResult(score);
+  }
+
+  @Override
+  public Double calculateScore(Double actual, Double expected) {
     double actualVal = actual * count;
     double expectedVal = expected * count;
     double numerator = Math.pow((actualVal - expectedVal), 2.0);
