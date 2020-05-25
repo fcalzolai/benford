@@ -4,13 +4,8 @@ import java.util.List;
 
 public class ChiSquareResult extends ResultHandler {
 
-  private static final double CHI_SQUARE_95 = 15.51;
-  private static final double CHI_SQUARE_99 = 20.09;
   private static final String CHI_SQUARE_COLUMN_NAME = "Chi Square";
-  private static final List<String> AGGREGATE_COLUMNS_NAMES = List.of(
-          "Chi Square",
-          "Chi Square 95%",
-          "Chi Square 99%");
+  private static final List<String> AGGREGATE_COLUMNS_NAMES = List.of(CHI_SQUARE_COLUMN_NAME);
 
   private final double chiSquare;
 
@@ -21,7 +16,7 @@ public class ChiSquareResult extends ResultHandler {
 
   @Override
   public List<Number> getAggregateValues() {
-    return List.of(chiSquare, CHI_SQUARE_95, CHI_SQUARE_99);
+    return List.of(chiSquare);
   }
 
   @Override
