@@ -20,6 +20,7 @@ class ChiSquareResultCalculatorTest {
           0.03578802478
   };
 
+
   private static final double[] EXPECTED_CHI_SQUARE = new double[]{
           Double.NaN,
           0.4103109803,
