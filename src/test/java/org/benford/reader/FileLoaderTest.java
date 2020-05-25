@@ -1,4 +1,4 @@
-package org.benford.loader;
+package org.benford.reader;
 
 import com.opencsv.exceptions.CsvValidationException;
 import org.benford.BenfordConst;
@@ -6,12 +6,13 @@ import org.benford.BenfordSeries;
 import org.benford.factory.BenfordSeriesFactory;
 import org.benford.score.ResultHandler;
 import org.benford.score.ZScoreCalculator;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
 import java.net.URL;
+import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FileLoaderTest {
@@ -48,24 +49,27 @@ public class FileLoaderTest {
 
   @Test
   void createBenfordDistribution() throws IOException, CsvValidationException {
-    ResultHandler score = getZScore(WID_IT_PARTIAL, 5, 2);
-    System.out.println(score);
+    ResultHandler result = getZScore(WID_IT_PARTIAL, 5, 2);
+    List<Number> values = result.getAggregateValues();
+    assertEquals(5, values.get(0));
+    assertEquals(2, values.get(1));
   }
 
   @Test
   void createBenfordDistribution2() throws IOException, CsvValidationException {
     ResultHandler score = getZScore(WID_IT_ALL, 1, 4);
-    Assertions.assertArrayEquals(WID_IT_ZSCORE_EXPECTED, score.getSeries(), DELTA);
+    assertArrayEquals(WID_IT_ZSCORE_EXPECTED, score.getSeries(), DELTA);
   }
 
   @Test
   void createFibonacciBenfordDistribution() throws IOException, CsvValidationException {
     BenfordSeries benfordSeries = getBenfordSeries(FIBONACCI, 0, 0);
     ZScoreCalculator calculator = new ZScoreCalculator(benfordSeries);
-    ResultHandler resultHandler = calculator.calculateResult(BenfordConst.FIRST_DIGIT_DISTRIBUTION);
-    Assertions.assertArrayEquals(EXPECTED_FIBONACCI_SERIES, benfordSeries.getSeries(), 0.0);
-    assertEquals(0, resultHandler.valueNotBenfordDistributedIn95());
-    assertEquals(0, resultHandler.valueNotBenfordDistributedIn99());
+    ResultHandler result = calculator.calculateResult(BenfordConst.FIRST_DIGIT_DISTRIBUTION);
+    assertArrayEquals(EXPECTED_FIBONACCI_SERIES, benfordSeries.getSeries(), 0.0);
+    List<Number> values = result.getAggregateValues();
+    assertEquals(0, values.get(0));
+    assertEquals(0, values.get(1));
   }
 
   private static ResultHandler getZScore(String path, int skipLine, int column) throws IOException, CsvValidationException {

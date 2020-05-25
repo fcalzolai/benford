@@ -40,13 +40,13 @@ class ChiSquareResultCalculatorTest {
   private static final Double DELTA = 0.0001;
 
   @Test
-  void calculateChiSquare() {
+  void calculateScore() {
     Double chiSquare = CHI_SQUARE_CALCULATOR.calculateScore(DIGIT_DISTRIBUTION[1], FIRST_DIGIT_DISTRIBUTION[1]);
     Assertions.assertEquals(0.4103109803, chiSquare, DELTA);
   }
 
   @Test
-  void testCalculateChiSquare() {
+  void calculateResult() {
     ResultHandler res = CHI_SQUARE_CALCULATOR.calculateResult(FIRST_DIGIT_DISTRIBUTION);
     Assertions.assertArrayEquals(EXPECTED_CHI_SQUARE, res.getSeries(), DELTA);
   }

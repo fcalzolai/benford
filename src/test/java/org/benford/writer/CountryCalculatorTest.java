@@ -1,4 +1,4 @@
-package org.benford.printer;
+package org.benford.writer;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

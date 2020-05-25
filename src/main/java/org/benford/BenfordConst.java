@@ -28,12 +28,4 @@ public class BenfordConst {
           0.0850
   };
 
-  public static double ZSCORE_95 = 1.96;
-
-  public static double ZSCORE_99 = 2.58;
-
-  public static double CHI_SQUARE_95 = 15.51;
-
-  public static double CHI_SQUARE_99 = 20.09;
-
 }

@@ -2,31 +2,17 @@ package org.benford.score;
 
 import org.benford.Series;
 
+import java.util.List;
+
 public abstract class ResultHandler extends Series {
 
   public ResultHandler(double[] series) {
     super(series);
   }
 
-  protected abstract double get95Accuracy();
+  public abstract List<Number> getAggregateValues();
 
-  protected abstract double get99Accuracy();
+  public abstract String getColumnName();
 
-  public int valueNotBenfordDistributedIn95() {
-    return valueNotIn(get95Accuracy());
-  }
-
-  public int valueNotBenfordDistributedIn99() {
-    return valueNotIn(get99Accuracy());
-  }
-
-  private int valueNotIn(double limit) {
-    int res = 0;
-    for (double d: series) {
-      if (d > limit) {
-        res++;
-      }
-    }
-    return res;
-  }
+  public abstract List<String> getAggregateColumnsNames();
 }

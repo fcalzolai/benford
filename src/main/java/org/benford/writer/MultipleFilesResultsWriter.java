@@ -1,7 +1,7 @@
-package org.benford.printer;
+package org.benford.writer;
 
 import com.opencsv.exceptions.CsvValidationException;
-import org.benford.BenfordSeries;
+import org.benford.score.BenfordResultCalculator;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -9,23 +9,22 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
-import java.util.LinkedList;
 
 import static java.io.File.separator;
-import static org.benford.factory.BenfordSeriesFactory.getBenfordDataPrinters;
+import static org.benford.factory.BenfordSeriesFactory.createBenFordDataPrinter;
+import static org.benford.factory.BenfordSeriesFactory.getBenfordDataCalculators;
 
-public class MultipleFilesDataPrinter {
+public class MultipleFilesResultsWriter {
 
   private static final String OUTPUT_PREFIX = "Output_";
   private static final String SUMMARY_FILE_NAME = "Summary.csv";
 
   private final String input;
   private final String output;
-  private LinkedList<AggregateDataPrinter> aggregateDataPrinters;
 
-  public MultipleFilesDataPrinter(String input, String output) throws IOException {
+  public MultipleFilesResultsWriter(String input, String output) throws IOException {
     this.input = input;
-    ClassLoader classLoader = MultipleFilesDataPrinter.class.getClassLoader();
+    ClassLoader classLoader = MultipleFilesResultsWriter.class.getClassLoader();
     String inputPath = classLoader.getResource(input).getPath();
     this.output = Paths.get(inputPath).toAbsolutePath() + separator + output + separator;
     Files.createDirectories(Paths.get(this.output));
@@ -33,27 +32,26 @@ public class MultipleFilesDataPrinter {
 
   public void computeData() throws IOException, CsvValidationException {
     System.out.println("Calculating data ... ");
-    HashMap<String, BenfordDataPrinter> dataPrinters = getBenfordDataPrinters(input, 1, 4);
-    aggregateDataPrinters = new LinkedList<>();
+    HashMap<String, BenfordResultCalculator> calculators = getBenfordDataCalculators(input, 1, 4);
+    saveBenfordResultToFile(calculators);
+    saveAggregateResultToFile(calculators);
+  }
+
+  private void saveBenfordResultToFile(HashMap<String, BenfordResultCalculator> calculators) {
+    HashMap<String, BenfordResultWriter> dataPrinters = createBenFordDataPrinter(calculators);
     dataPrinters.forEach((name, bdp) -> {
       System.out.print("Saving data for source file: " + name);
       writeResultToFile(name, bdp);
-      saveAggregateData(name, bdp);
       System.out.println(" Done");
     });
-
-    writeAggregateDataToFile();
   }
 
-  private void writeAggregateDataToFile() {
+  private void saveAggregateResultToFile(HashMap<String, BenfordResultCalculator> calculators) {
     File newFile = new File(output + OUTPUT_PREFIX + SUMMARY_FILE_NAME);
     FileWriter fw = null;
     try {
       fw = new FileWriter(newFile);
-      fw.write(AggregateDataPrinter.COLUMN_NAMES);
-      for (AggregateDataPrinter zsp : aggregateDataPrinters) {
-        fw.write(zsp.toCsv());
-      }
+      fw.write(new AggregateResultWriter(calculators).toCsv());
     } catch (IOException e) {
       System.err.println("Unable to create new file " + newFile.getPath());
     } finally {
@@ -61,12 +59,7 @@ public class MultipleFilesDataPrinter {
     }
   }
 
-  private void saveAggregateData(String name, BenfordDataPrinter bdp) {
-    BenfordSeries benfordSeries = bdp.getBenfordSeries();
-    aggregateDataPrinters.add(new AggregateDataPrinter(name, benfordSeries));
-  }
-
-  private void writeResultToFile(String name, BenfordDataPrinter bdp) {
+  private void writeResultToFile(String name, BenfordResultWriter bdp) {
     File newFile = new File(output + name);
     FileWriter fw = null;
     try {

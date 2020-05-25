@@ -1,4 +1,4 @@
-package org.benford.loader;
+package org.benford.reader;
 
 import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;

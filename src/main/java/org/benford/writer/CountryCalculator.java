@@ -1,4 +1,4 @@
-package org.benford.printer;
+package org.benford.writer;
 
 import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CountryCalculator {
+class CountryCalculator {
 
   private static final String COUNTRIES_FILE = "stats/WID_countries.csv";
   private static CountryCalculator instance;
@@ -46,8 +46,9 @@ public class CountryCalculator {
     } catch (Exception e) {
       e.printStackTrace();
       System.err.println("Unable to build countries map from file: " + COUNTRIES_FILE);
-      closeCsvReader(csvReader);
       throw new RuntimeException(e);
+    } finally {
+      closeCsvReader(csvReader);
     }
   }
 
@@ -72,7 +73,7 @@ public class CountryCalculator {
   }
 
   private CSVReader getCsvReader() throws FileNotFoundException {
-    URL url = AggregateDataPrinter.class.getClassLoader().getResource(COUNTRIES_FILE);
+    URL url = AggregateResultWriter.class.getClassLoader().getResource(COUNTRIES_FILE);
 
     CSVParser parser = new CSVParserBuilder()
             .withSeparator(';')

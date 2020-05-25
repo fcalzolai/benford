@@ -22,11 +22,11 @@ class ZScoreResultTest {
 
   @Test
   void valueNotBenfordDistributedIn95() {
-    assertEquals(3, Z_SCORE.valueNotBenfordDistributedIn95());
+    assertEquals(3, Z_SCORE.getAggregateValues().get(0));
   }
 
   @Test
   void valueNotBenfordDistributedIn99() {
-    assertEquals(2, Z_SCORE.valueNotBenfordDistributedIn99());
+    assertEquals(2, Z_SCORE.getAggregateValues().get(1));
   }
 }
