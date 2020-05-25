@@ -37,7 +37,9 @@ public class ChiSquareResult extends ResultHandler {
   private double calcChiSquare(double[] series) {
     double chi = 0;
     for (double v : series) {
-      chi += v;
+      if (Double.isFinite(v)) {
+        chi += v;
+      }
     }
     return chi;
   }

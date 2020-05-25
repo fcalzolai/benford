@@ -8,7 +8,7 @@ public class ZScoreResult extends ResultHandler {
   private static final double ZSCORE_99 = 2.58;
   private static final String ZSCORE_COLUMN_NAME = "ZScore";
   private static final List<String> AGGREGATE_COLUMNS_NAMES = List.of(
-          "# digit not in Benford distribution 95%, ",
+          "# digit not in Benford distribution 95%",
           "# digit not in Benford distribution 99%");
 
   public ZScoreResult(double[] series) {
