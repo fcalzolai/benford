@@ -14,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class AggregateResultWriterTest {
 
   private static final String FILE_NAME = "fileName";
+  private static final double DELTA = 0.00001;
 
   private AggregateResultWriter getWriter(TestValues tv) {
     BenfordSeries bs = new BenfordSeries(tv.getValues());
@@ -47,7 +48,7 @@ class AggregateResultWriterTest {
     List<ResultHandler> handlers = calculators.get(FILE_NAME).getResultHandlers();
 
     assertIterableEquals(List.of(2, 1), getZScore(handlers));
-    assertEquals(33.41144805, getChi(handlers), 0.00001);
+    assertEquals(33.41144805, getChi(handlers), DELTA);
   }
 
   @Test
@@ -58,7 +59,7 @@ class AggregateResultWriterTest {
     List<ResultHandler> handlers = calculators.get(FILE_NAME).getResultHandlers();
 
     assertIterableEquals(List.of(0, 0), getZScore(handlers));
-    assertEquals(6.59924813, getChi(handlers), 0.00001);
+    assertEquals(6.59924813, getChi(handlers), DELTA);
   }
 
   @Test
@@ -69,7 +70,7 @@ class AggregateResultWriterTest {
     List<ResultHandler> handlers = calculators.get(FILE_NAME).getResultHandlers();
 
     assertIterableEquals(List.of(1, 0), getZScore(handlers));
-    assertEquals(11.97330837, getChi(handlers), 0.00001);
+    assertEquals(11.97330837, getChi(handlers), DELTA);
   }
 
   private double getChi(List<ResultHandler> handlers) {
