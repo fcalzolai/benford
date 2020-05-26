@@ -17,6 +17,7 @@ import java.util.regex.Pattern;
 class CountryCalculator {
 
   private static final String COUNTRIES_FILE = "stats/WID_countries.csv";
+  private static final String WID_DATA_FILE_PATTERN = "WID_data_(.*?).csv";
   private static CountryCalculator instance;
 
   private final HashMap<String, String> countriesMap;
@@ -53,7 +54,7 @@ class CountryCalculator {
   }
 
   private static String getRegionCode(String fileName) {
-    Pattern pattern = Pattern.compile("WID_data_(.*?).csv");
+    Pattern pattern = Pattern.compile(WID_DATA_FILE_PATTERN);
     Matcher matcher = pattern.matcher(fileName);
     if (matcher.find()) {
       return matcher.group(1);

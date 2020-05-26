@@ -16,7 +16,7 @@ import static org.benford.factory.BenfordSeriesFactory.getBenfordDataCalculators
 
 public class MultipleFilesResultsWriter {
 
-  private static final String OUTPUT_PREFIX = "Output_";
+  private static final String OUTPUT_PREFIX = "Results_";
   private static final String SUMMARY_FILE_NAME = "Summary.csv";
 
   private final String input;
@@ -60,7 +60,7 @@ public class MultipleFilesResultsWriter {
   }
 
   private void writeResultToFile(String name, BenfordResultWriter bdp) {
-    File newFile = new File(output + name);
+    File newFile = new File(output + OUTPUT_PREFIX + name);
     FileWriter fw = null;
     try {
       fw = new FileWriter(newFile);

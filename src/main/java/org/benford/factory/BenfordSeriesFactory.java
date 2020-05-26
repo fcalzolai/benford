@@ -11,10 +11,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class BenfordSeriesFactory {
 
-  private static final String INPUT_FILE_EXTENSION = ".csv";
+  private static final String WID_DATA_FILE_PATTERN = "WID_data_.*.csv";
 
   public static HashMap<String, BenfordResultCalculator> getBenfordDataCalculators(String path, int skipLine, int column)
           throws IOException, CsvValidationException {
@@ -43,6 +45,8 @@ public class BenfordSeriesFactory {
   }
 
   public static boolean validateFile(File file) {
-    return file.isFile() && file.getName().endsWith(INPUT_FILE_EXTENSION);
+    Pattern pattern = Pattern.compile(WID_DATA_FILE_PATTERN);
+    Matcher matcher = pattern.matcher(file.getName());
+    return matcher.find();
   }
 }
