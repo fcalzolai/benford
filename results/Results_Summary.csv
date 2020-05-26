@@ -1,0 +1,338 @@
+Source file,Country,# Lines,# digit not in Benford distribution 95%,# digit not in Benford distribution 99%,P value
+WID_data_QJ.csv,"Central Asia",3394,4,4,0.0
+WID_data_MG.csv,"Madagascar",44322,6,6,0.0
+WID_data_BY.csv,"Belarus",8348,8,7,0.0
+WID_data_NE.csv,"Niger",34870,3,3,0.0
+WID_data_US-WV.csv,"West Virginia",4452,8,5,0.0
+WID_data_ID.csv,"Indonesia",10008,5,3,1.3769499859650835E-7
+WID_data_TO.csv,"Tonga",8472,8,6,0.0
+WID_data_XR.csv,"Russia and Ukraine",38786,9,9,0.0
+WID_data_US-MI.csv,"Michigan",4452,5,5,0.0
+WID_data_US-MT.csv,"Montana",4452,6,4,0.0
+WID_data_RS.csv,"Serbia",85979,9,9,0.0
+WID_data_NP.csv,"Nepal",9020,3,3,1.3460252329071422E-8
+WID_data_GH.csv,"Ghana",38510,6,5,0.0
+WID_data_US-FL.csv,"Florida",4452,5,5,0.0
+WID_data_FJ.csv,"Fiji",8698,5,4,3.418648945466198E-7
+WID_data_QU.csv,"Southern Asia",8355,2,2,0.007739164594923214
+WID_data_JM.csv,"Jamaica",9025,5,4,0.0
+WID_data_MR.csv,"Mauritania",37698,5,4,0.0
+WID_data_TD.csv,"Chad",35011,6,6,0.0
+WID_data_BG.csv,"Bulgaria",114384,9,9,0.0
+WID_data_PA.csv,"Panama",9022,6,3,6.633873777623888E-8
+WID_data_AI.csv,"Anguilla",277,3,1,3.0556096265333394E-6
+WID_data_LT.csv,"Lithuania",113767,8,8,0.0
+WID_data_CW.csv,"Curacao",8080,7,7,0.0
+WID_data_PW.csv,"Palau",702,7,6,0.0
+WID_data_US-AK.csv,"Alaska",3177,6,4,0.0
+WID_data_TZ.csv,"Tanzania",35583,7,4,0.0
+WID_data_EH.csv,"Western Sahara",7310,6,3,3.2074657586947716E-8
+WID_data_BR.csv,"Brazil",36519,6,5,0.0
+WID_data_AE.csv,"United Arab Emirates",33725,4,3,0.0
+WID_data_QC.csv,"Americas",8355,6,6,0.0
+WID_data_US-AR.csv,"Arkansas",4452,8,6,0.0
+WID_data_RO.csv,"Romania",114377,8,7,0.0
+WID_data_NL.csv,"Netherlands",122553,8,7,0.0
+WID_data_KR.csv,"Korea",20111,7,7,0.0
+WID_data_CN-UR.csv,"Urban China",105681,7,7,0.0
+WID_data_SX.csv,"Sint Maarten (Dutch part)",277,2,2,2.278719063815621E-4
+WID_data_PH.csv,"Philippines",9022,3,3,7.056149403946257E-7
+WID_data_ES.csv,"Spain",135755,9,8,0.0
+WID_data_TK.csv,"Tokelau",69,6,3,0.0
+WID_data_US-VT.csv,"Vermont",4452,6,5,0.0
+WID_data_AW.csv,"Aruba",8469,5,5,0.0
+WID_data_MY.csv,"Malaysia",9392,3,0,0.010371460513457779
+WID_data_XN.csv,"Middle East and Northern Africa",39095,6,5,0.0
+WID_data_CL.csv,"Chile",9937,7,6,0.0
+WID_data_US-NV.csv,"Nevada",4452,4,2,2.841757736701086E-5
+WID_data_GL.csv,"Greenland",219,1,1,3.4965018085782324E-8
+WID_data_RW.csv,"Rwanda",40472,5,5,0.0
+WID_data_CI.csv,"Cote d'Ivoire",19994,5,5,0.0
+WID_data_XR-MER.csv,"Russia and Ukraine, Market Exchange Rate",38786,9,9,0.0
+WID_data_AL.csv,"Albania",114366,6,4,0.0
+WID_data_HT.csv,"Haiti",9025,4,3,1.4975513582795565E-6
+WID_data_VG.csv,"Virgin Islands, British",635,6,4,0.0
+WID_data_MU.csv,"Mauritius",38432,7,5,0.0
+WID_data_IR.csv,"Iran",34083,6,6,0.0
+WID_data_NA.csv,"Namibia",34786,8,8,0.0
+WID_data_GA.csv,"Gabon",34866,9,9,0.0
+WID_data_WF.csv,"Wallis and Futuna",69,8,4,0.0
+WID_data_KZ.csv,"Kazakhstan",8342,6,4,0.0
+WID_data_DE-BD.csv,"Baden",348,5,3,1.1170617381605482E-8
+WID_data_LB.csv,"Lebanon",33966,6,6,0.0
+WID_data_US-SD.csv,"South Dakota",4452,4,4,0.0
+WID_data_QQ.csv,"Oceania (excl. Australia and New Zealand)",8177,6,3,6.939106193933331E-9
+WID_data_QM.csv,"Eastern Europe",113765,9,9,0.0
+WID_data_MN.csv,"Mongolia",8814,3,1,0.0041846907233118544
+WID_data_PS.csv,"Palestine",33878,7,7,0.0
+WID_data_SN.csv,"Senegal",34911,5,5,0.0
+WID_data_US-NY.csv,"New York",4452,6,5,0.0
+WID_data_VN.csv,"Viet Nam",8882,4,4,0.0
+WID_data_TV.csv,"Tuvalu",671,6,6,0.0
+WID_data_US-WY.csv,"Wyoming",4452,4,3,0.0
+WID_data_PE.csv,"Peru",9022,6,4,0.0
+WID_data_DJ.csv,"Djibouti",34724,7,7,0.0
+WID_data_KV.csv,"",24097,7,7,0.0
+WID_data_BD.csv,"Bangladesh",9003,3,3,8.925766804177849E-7
+WID_data_TH.csv,"Thailand",55062,7,5,0.0
+WID_data_SC.csv,"Seychelles",35473,8,8,0.0
+WID_data_QF.csv,"Oceania",30811,7,5,0.0
+WID_data_MC.csv,"Monaco",219,5,2,2.053735613267867E-7
+WID_data_YE.csv,"Yemen",33821,7,7,0.0
+WID_data_AS.csv,"American Samoa",123,1,1,8.759985452937333E-6
+WID_data_QX.csv,"Western Europe",8355,9,9,0.0
+WID_data_PL.csv,"Poland",142895,7,7,0.0
+WID_data_SU.csv,"USSR",8394,7,7,0.0
+WID_data_LI.csv,"Liechtenstein",327,2,0,0.0884745058763436
+WID_data_NO.csv,"Norway",125922,9,9,0.0
+WID_data_ET.csv,"Ethiopia",43377,8,8,0.0
+WID_data_QT.csv,"Southern Africa",15859,8,8,0.0
+WID_data_FI.csv,"Finland",119459,9,9,0.0
+WID_data_FR.csv,"France",895904,9,9,0.0
+WID_data_PK.csv,"Pakistan",9022,5,2,1.231753102862959E-8
+WID_data_VA.csv,"Holy See",69,8,5,0.0
+WID_data_TN.csv,"Tunisia",39667,7,7,0.0
+WID_data_MZ.csv,"Mozambique",34934,8,7,0.0
+WID_data_BO.csv,"Bolivia",9025,3,2,1.9818746051102155E-4
+WID_data_BF.csv,"Burkina Faso",34788,8,6,0.0
+WID_data_IN.csv,"India",145302,7,7,0.0
+WID_data_CO.csv,"Colombia",9896,6,6,0.0
+WID_data_GR.csv,"Greece",117225,8,8,0.0
+WID_data_AZ.csv,"Azerbaijan",8345,7,5,0.0
+WID_data_GI.csv,"Gibraltar",69,6,3,0.0
+WID_data_GE.csv,"Georgia",8695,8,7,0.0
+WID_data_KH.csv,"Cambodia",8915,8,6,0.0
+WID_data_CF.csv,"Central African Republic",35000,8,8,0.0
+WID_data_SI.csv,"Slovenia",113941,8,8,0.0
+WID_data_HR.csv,"Croatia",113882,8,8,0.0
+WID_data_LU.csv,"Luxembourg",114095,9,9,0.0
+WID_data_GN.csv,"Guinea",34820,7,6,0.0
+WID_data_CK.csv,"Cook Islands",219,5,1,2.4392426961672307E-8
+WID_data_SR.csv,"Suriname",8818,4,2,1.5122881986495032E-6
+WID_data_US-RI.csv,"Rhode Island",4452,7,6,0.0
+WID_data_ZM.csv,"Zambia",36337,5,5,0.0
+WID_data_DE-SN.csv,"Saxony",528,8,6,0.0
+WID_data_BS.csv,"Bahamas",8803,5,4,2.3761546734048957E-9
+WID_data_GW.csv,"Guinea-Bissau",34782,7,6,0.0
+WID_data_IE.csv,"Ireland",114714,9,9,0.0
+WID_data_MH.csv,"Marshall Islands",663,5,4,0.0
+WID_data_US-MA.csv,"Massachusetts",4452,5,4,0.0
+WID_data_US-TN.csv,"Tennessee",4452,8,7,0.0
+WID_data_QB.csv,"Africa",34367,9,8,0.0
+WID_data_FM.csv,"Micronesia",8179,6,3,0.0
+WID_data_US-MS.csv,"Mississippi",4452,6,6,0.0
+WID_data_JP.csv,"Japan",32276,7,6,0.0
+WID_data_DO.csv,"Dominican Republic",9028,3,2,8.308662891497305E-5
+WID_data_QK.csv,"Eastern Africa",15859,7,7,0.0
+WID_data_US-CO.csv,"Colorado",4452,5,5,0.0
+WID_data_KY.csv,"Cayman Islands",737,3,3,0.0
+WID_data_US-OK.csv,"Oklahoma",4452,6,6,0.0
+WID_data_QY.csv,"European Union",113768,7,7,0.0
+WID_data_CS.csv,"Czechoslovakia",8395,7,6,0.0
+WID_data_MV.csv,"Maldives",8461,2,2,4.92643015407925E-4
+WID_data_BJ.csv,"Benin",34980,8,8,0.0
+WID_data_US-UT.csv,"Utah",4452,4,4,0.0
+WID_data_US-ME.csv,"Maine",4452,6,6,0.0
+WID_data_XA-MER.csv,"Asia (excluding Middle East), Market Exchange Rate",38894,6,6,0.0
+WID_data_DE-HE.csv,"Hesse",564,7,5,0.0
+WID_data_SV.csv,"El Salvador",9025,4,3,4.2601787170754314E-7
+WID_data_MM.csv,"Myanmar",9025,2,2,2.9088942883741835E-7
+WID_data_XL.csv,"Latin America",38791,6,6,0.0
+WID_data_US-TX.csv,"Texas",4452,7,6,0.0
+WID_data_AD.csv,"Andorra",219,3,3,8.555217982491438E-7
+WID_data_GM.csv,"Gambia",34867,7,7,0.0
+WID_data_KP.csv,"North Korea",7987,8,8,0.0
+WID_data_EG.csv,"Egypt",34084,7,6,0.0
+WID_data_TR.csv,"Turkey",34097,6,6,0.0
+WID_data_NI.csv,"Nicaragua",8957,3,2,0.0013019267707099868
+WID_data_LC.csv,"Saint Lucia",8641,4,4,0.0
+WID_data_PF.csv,"French Polynesia",7927,4,4,6.368499145502486E-9
+WID_data_AM.csv,"Armenia",8349,8,6,0.0
+WID_data_IS.csv,"Iceland",114352,8,8,0.0
+WID_data_CN-RU.csv,"Rural China",105679,7,6,0.0
+WID_data_UA.csv,"Ukraine",8644,7,6,0.0
+WID_data_BW.csv,"Botswana",39506,7,6,0.0
+WID_data_MD.csv,"Moldova",113881,9,9,0.0
+WID_data_CA.csv,"Canada",35285,4,4,0.0
+WID_data_XL-MER.csv,"Latin America, Market Exchange Rate",38791,8,8,0.0
+WID_data_GD.csv,"Grenada",8693,5,5,0.0
+WID_data_DE-WU.csv,"Wurttemberg",108,4,1,4.6693275514316136E-4
+WID_data_TW.csv,"Taiwan",11783,7,7,0.0
+WID_data_US-CT.csv,"Connecticut",4452,6,5,0.0
+WID_data_KG.csv,"Kyrgyzstan",8393,4,3,0.0
+WID_data_US-NJ.csv,"New Jersey",4452,5,3,0.0
+WID_data_HN.csv,"Honduras",9028,3,3,5.507055382602348E-9
+WID_data_QP.csv,"Northern America",42359,6,6,0.0
+WID_data_PT.csv,"Portugal",115632,9,9,0.0
+WID_data_US.csv,"USA",517318,5,5,0.0
+WID_data_BN.csv,"Brunei Darussalam",8419,6,5,0.0
+WID_data_SM.csv,"San Marino",692,4,2,7.835718991180372E-6
+WID_data_US-MN.csv,"Minnesota",4452,7,7,0.0
+WID_data_QG.csv,"Australia and New Zealand",8355,7,6,0.0
+WID_data_BE.csv,"Belgium",114681,9,9,0.0
+WID_data_DK.csv,"Denmark",128461,8,8,0.0
+WID_data_SD.csv,"Sudan",34980,6,5,0.0
+WID_data_GQ.csv,"Equatorial Guinea",34764,6,5,0.0
+WID_data_SZ.csv,"Swaziland",34825,9,9,0.0
+WID_data_CN.csv,"China",119205,8,8,0.0
+WID_data_AG.csv,"Antigua and Barbuda",8586,8,7,0.0
+WID_data_LR.csv,"Liberia",34877,7,7,0.0
+WID_data_QA.csv,"Qatar",33778,8,8,0.0
+WID_data_XI.csv,"Channel Islands",7865,8,6,0.0
+WID_data_AR.csv,"Argentina",10137,6,4,0.0
+WID_data_KI.csv,"Kiribati",8347,7,5,0.0
+WID_data_ZW.csv,"Zimbabwe",38547,8,8,0.0
+WID_data_QY-MER.csv,"",20359,8,8,0.0
+WID_data_SO.csv,"Somalia",34772,7,5,0.0
+WID_data_US-OR.csv,"Oregon",4452,8,7,0.0
+WID_data_TM.csv,"Turkmenistan",8267,6,4,0.0
+WID_data_US-DC.csv,"District of Columbia",4452,4,4,0.0
+WID_data_VI.csv,"Virgin Islands, US",8079,6,5,0.0
+WID_data_DE.csv,"Germany",130144,9,9,0.0
+WID_data_CU.csv,"Cuba",8761,7,7,0.0
+WID_data_EC.csv,"Ecuador",9025,4,4,1.045046867095004E-6
+WID_data_JO.csv,"Jordan",34040,7,6,0.0
+WID_data_AN.csv,"Netherlands Antilles",321,5,3,0.0
+WID_data_RU.csv,"Russian Federation",100287,9,9,0.0
+WID_data_NC.csv,"New Caledonia",7946,4,4,0.0
+WID_data_QL.csv,"Eastern Asia",8410,7,6,0.0
+WID_data_NR.csv,"Nauru",767,1,0,0.021708334109434797
+WID_data_US-PA.csv,"Pennsylvania",4452,4,4,0.0
+WID_data_LV.csv,"Latvia",113674,8,8,0.0
+WID_data_SH.csv,"Saint Helena",69,6,5,0.0
+WID_data_US-SC.csv,"South Carolina",4452,7,6,0.0
+WID_data_XF-MER.csv,"Sub-Saharan Africa, Market Exchange Rate",38891,7,6,0.0
+WID_data_BI.csv,"Burundi",34987,5,5,0.0
+WID_data_US-NE.csv,"Nebraska",4452,8,7,0.0
+WID_data_IM.csv,"Isle of Man",583,5,5,0.0
+WID_data_MP.csv,"Northern Mariana Islands",123,4,1,1.2381180909736345E-5
+WID_data_QS.csv,"South-Eastern Asia",8355,5,4,0.0
+WID_data_US-GA.csv,"Georgia",4452,6,5,0.0
+WID_data_BA.csv,"Bosnia and Herzegovina",113885,8,8,0.0
+WID_data_PY.csv,"Paraguay",9028,3,1,4.117479767933863E-6
+WID_data_XM.csv,"Middle East",30006,7,7,0.0
+WID_data_QO.csv,"Northern Africa",15859,8,7,0.0
+WID_data_TJ.csv,"Tajikistan",8400,6,5,0.0
+WID_data_DE-BY.csv,"Bavaria",24,3,1,2.4661979160619443E-7
+WID_data_US-NM.csv,"New Mexico",4452,7,5,0.0
+WID_data_WO.csv,"World",42752,9,9,0.0
+WID_data_TT.csv,"Trinidad and Tobago",9007,9,8,0.0
+WID_data_US-MO.csv,"Missouri",4452,8,6,0.0
+WID_data_SL.csv,"Sierra Leone",35960,7,7,0.0
+WID_data_YU.csv,"Yugoslavia",7901,9,9,0.0
+WID_data_HK.csv,"Hong Kong",8969,6,5,0.0
+WID_data_WO-MER.csv,"World (Market Exchange Rate)",34336,8,8,0.0
+WID_data_CR.csv,"Costa Rica",9022,1,0,0.06516351952989985
+WID_data_SA.csv,"Saudi Arabia",34081,7,6,0.0
+WID_data_US-IL.csv,"Illinois",4452,5,5,0.0
+WID_data_US-CA.csv,"California",4452,4,4,0.0
+WID_data_PG.csv,"Papua New Guinea",8740,5,3,1.574073092117174E-8
+WID_data_GU.csv,"Guam",7549,7,6,0.0
+WID_data_BB.csv,"Barbados",8734,4,4,0.0
+WID_data_UG.csv,"Uganda",37092,6,5,0.0
+WID_data_ZA.csv,"South Africa",41667,7,6,0.0
+WID_data_AU.csv,"Australia",28356,7,5,0.0
+WID_data_MA.csv,"Morocco",40614,9,8,0.0
+WID_data_IT.csv,"Italy",127813,9,9,0.0
+WID_data_US-VA.csv,"Virginia",4452,6,6,0.0
+WID_data_MW.csv,"Malawi",36788,6,5,0.0
+WID_data_QD.csv,"Asia",8410,7,5,0.0
+WID_data_US-IA.csv,"Iowa",4452,7,6,0.0
+WID_data_US-MD.csv,"Maryland",4452,4,4,0.0
+WID_data_DZ.csv,"Algeria",36892,7,7,0.0
+WID_data_BT.csv,"Bhutan",8526,5,4,4.096752573587183E-6
+WID_data_BM.csv,"Bermuda",906,6,4,0.0
+WID_data_LK.csv,"Sri Lanka",9023,7,7,0.0
+WID_data_SS.csv,"South Sudan",10776,6,4,0.0
+WID_data_MS.csv,"Montserrat",285,3,2,8.356616319820428E-7
+WID_data_KM.csv,"Comoros",34761,7,5,0.0
+WID_data_UY.csv,"Uruguay",9443,6,6,0.0
+WID_data_US-KY.csv,"Kentucky",4452,8,8,0.0
+WID_data_ME.csv,"Montenegro",85975,8,8,0.0
+WID_data_QV.csv,"Western Africa",15859,9,7,0.0
+WID_data_LY.csv,"Libya",34993,7,7,0.0
+WID_data_QH.csv,"Caribbean",8355,4,3,0.0
+WID_data_SE.csv,"Sweden",146985,9,8,0.0
+WID_data_CG.csv,"Congo",34840,7,6,0.0
+WID_data_QF-MER.csv,"",4725,8,8,0.0
+WID_data_XN-MER.csv,"Middle East and Northern Africa, Market Exchange Rate",39095,7,7,0.0
+WID_data_US-WI.csv,"Wisconsin",4452,7,6,0.0
+WID_data_VE.csv,"Venezuela",8893,3,1,8.202162986200848E-4
+WID_data_ML.csv,"Mali",34857,4,3,0.0
+WID_data_DE-HB.csv,"Bremen",480,8,6,0.0
+WID_data_CY.csv,"Cyprus",113935,9,9,0.0
+WID_data_CD.csv,"DR Congo",34837,5,5,0.0
+WID_data_US-NH.csv,"New Hampshire",4452,5,4,0.0
+WID_data_VU.csv,"Vanuatu",8412,3,3,2.4001537248198494E-5
+WID_data_OM.csv,"Oman",33896,5,5,0.0
+WID_data_WS.csv,"Samoa",8497,5,3,8.860403009644528E-9
+WID_data_US-HI.csv,"Hawaii",4452,6,6,0.0
+WID_data_SG.csv,"Singapore",13402,5,5,0.0
+WID_data_NZ.csv,"New Zealand",12499,6,5,0.0
+WID_data_VC.csv,"Saint Vincent and the Grenadines",8752,3,2,1.6646828248821019E-6
+WID_data_QI.csv,"Central America",8355,5,3,0.0
+WID_data_QP-MER.csv,"",38729,8,7,0.0
+WID_data_DD.csv,"German Democratic Republic",35571,9,9,0.0
+WID_data_ZZ.csv,"Zanzibar",30067,7,6,0.0
+WID_data_LS.csv,"Lesotho",38613,5,5,0.0
+WID_data_US-LA.csv,"Louisiana",4452,7,6,0.0
+WID_data_DE-HH.csv,"Hamburg",384,9,8,0.0
+WID_data_DM.csv,"Dominica",874,5,5,0.0
+WID_data_MX.csv,"Mexico",10544,3,3,0.0
+WID_data_US-IN.csv,"Indiana",4452,6,6,0.0
+WID_data_BH.csv,"Bahrain",33890,8,8,0.0
+WID_data_FK.csv,"Falkland Islands",69,5,1,0.0
+WID_data_QE-MER.csv,"",110126,9,9,0.0
+WID_data_QR.csv,"South America",8355,3,3,0.0
+WID_data_TL.csv,"Timor-Leste",8176,4,1,2.586669403288409E-5
+WID_data_IL.csv,"Israel",9028,3,3,1.587909469216846E-8
+WID_data_CV.csv,"Cabo Verde",34951,8,8,0.0
+WID_data_MO.csv,"Macao",8533,6,6,0.0
+WID_data_GY.csv,"Guyana",8897,8,6,0.0
+WID_data_SY.csv,"Syrian Arab Republic",33944,6,6,0.0
+WID_data_KS.csv,"Kosovo",11743,9,9,0.0
+WID_data_US-ND.csv,"North Dakota",4452,6,5,0.0
+WID_data_CM.csv,"Cameroon",35034,8,7,0.0
+WID_data_AF.csv,"Afghanistan",8944,5,3,2.1270124259023044E-9
+WID_data_US-OH.csv,"Ohio",4452,6,4,0.0
+WID_data_TC.csv,"Turks and Caicos Islands",645,0,0,0.2781771592755759
+WID_data_BZ.csv,"Belize",8813,3,2,5.636366388978559E-4
+WID_data_XF.csv,"Sub-Saharan Africa",38891,6,5,0.0
+WID_data_AO.csv,"Angola",34947,7,7,0.0
+WID_data_ER.csv,"Eritrea",26774,6,5,0.0
+WID_data_US-AZ.csv,"Arizona",4452,6,5,0.0
+WID_data_GB.csv,"United Kingdom",161460,8,8,0.0
+WID_data_US-NC.csv,"North Carolina",4452,5,5,0.0
+WID_data_QE.csv,"Europe",113772,9,9,0.0
+WID_data_SK.csv,"Slovakia",113413,9,9,0.0
+WID_data_MK.csv,"Macedonia",113868,9,9,0.0
+WID_data_QN.csv,"Middle Africa",15859,8,8,0.0
+WID_data_KE.csv,"Kenya",36415,6,6,0.0
+WID_data_US-KS.csv,"Kansas",4452,7,7,0.0
+WID_data_NU.csv,"Niue",69,2,1,1.6322792046182673E-5
+WID_data_FO.csv,"Faroe Islands",456,4,2,0.0
+WID_data_HU.csv,"Hungary",116987,8,8,0.0
+WID_data_PR.csv,"Puerto Rico",8761,6,5,0.0
+WID_data_SB.csv,"Solomon Islands",8544,1,0,0.08063069516518677
+WID_data_CZ.csv,"Czech Republic",143982,9,9,0.0
+WID_data_US-ID.csv,"Idaho",4452,6,5,0.0
+WID_data_XA.csv,"Asia (excl. Middle East)",38894,7,6,0.0
+WID_data_LA.csv,"Lao PDR",8900,3,3,3.4846145336371354E-5
+WID_data_US-AL.csv,"Alabama",4452,8,7,0.0
+WID_data_NG.csv,"Nigeria",40214,8,7,0.0
+WID_data_DE-PR.csv,"Prussia",540,7,6,0.0
+WID_data_UZ.csv,"Uzbekistan",8271,6,5,0.0
+WID_data_AT.csv,"Austria",114301,8,8,0.0
+WID_data_ST.csv,"Sao Tome and Principe",34807,9,8,0.0
+WID_data_PM.csv,"Saint Pierre and Miquelon",69,5,5,0.0
+WID_data_MT.csv,"Malta",113946,9,8,0.0
+WID_data_QW.csv,"Western Asia",8355,7,6,0.0
+WID_data_KN.csv,"Saint Kitts and Nevis",848,3,3,1.0143054299364639E-8
+WID_data_GT.csv,"Guatemala",9022,2,2,0.033895755711548015
+WID_data_EE.csv,"Estonia",113780,9,9,0.0
+WID_data_US-WA.csv,"Washington",4452,5,3,0.0
+WID_data_CH.csv,"Switzerland",116654,9,9,0.0
+WID_data_IQ.csv,"Iraq",33992,8,8,0.0
+WID_data_US-DE.csv,"Delaware",4452,4,4,1.542572256695401E-8
+WID_data_TG.csv,"Togo",34873,9,6,0.0
+WID_data_KW.csv,"Kuwait",33897,8,6,0.0
