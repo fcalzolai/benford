@@ -6,7 +6,7 @@ actual distribution adhere to the Benford's law.
 
 Since this is a simple experiment, the code may be bugged, and the results may contain errors. 
 
-##TL:DR 
+## TL:DR 
 There are 4 countries that adhere to Benford's law (out of 337 economic zones):
  * Turks and Caicos Islands 
  * Liechtenstein
