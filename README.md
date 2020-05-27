@@ -98,9 +98,9 @@ where it lists the statistical test results for each dataset file. For example:
 
 | Source file | Country | # Lines  | # ZScore digits (&alpha;=0.05) | # ZScore digits (&alpha;=0.01) | P Value |
 | ----- | ----- | ----- | ---------------------  | ------ | ---------- |
-|WID_data_QJ.csv|"Central Asia"|3394|4|4|92.89329202812593|
-|WID_data_MG.csv|"Madagascar"|44322|6|6|1453.0893136931927|
-|WID_data_BY.csv|"Belarus"|8348|8|7|598.2276989275849|
+|WID_data_QJ.csv|"Central Asia"|3394|4|4|0|
+|WID_data_MG.csv|"Madagascar"|44322|6|6|0|
+|WID_data_MN.csv|"Mongolia"|8814|3|1|0.004184690723312|
 
 where: 
 * `# Lines` is the number of lines in the corresponding input file
