@@ -1,15 +1,16 @@
 # Testing World Income Data using Benford's Law
 This is an experiment to test how many world income datasets satisfy [Benford's Law](http://en.wikipedia.org/wiki/Benfords_law). 
-The dataset used comes from the [World Income Database](https://wid.world/) (WID). This is a simple experiment therefore 
-the code may be bugged, and the results may contain errors.  
+The dataset used comes from the [World Income Database](https://wid.world/) (WID). The application calculates the digits 
+distribution for each dataset file provided by WID and then it applies several statistical tests to determine if the 
+actual distribution adhere to the Benford's law.
 
-The application calculates the digits distribution for each dataset file provided by WID and then it applies several 
-statistical tests to determine if the actual distribution adhere to the expected Benford's distribution. 
+Since this is a simple experiment, 
+the code may be bugged, and the results may contain errors.   
 
 
 ## Dataset and Methodology
 The dataset includes all the data provided by [WID](https://wid.world/bulk_download/wid_all_data.zip) (78.1 MB), and, at the moment of 
-writing, it includes 338 countries/regions. 
+writing, it includes 337 countries/regions. 
 
 The .csv data files in the WID archive have all the same structure:
 ```
@@ -28,8 +29,8 @@ given these values:
 
 It extracts: `1, 9, 3`.
 
-For each dataset, the application calculates the frequency of each digit and few statistical test. For example, given 
-the file [WID_data_IT.csv](./src/main/resources/stats/WID_data_IT.csv) this is the result 
+For each dataset, the application calculates the frequency of each digit and then some statistical tests. For example, 
+given the file [WID_data_IT.csv](./src/main/resources/stats/WID_data_IT.csv) this is the result 
 ([Results_WID_data_IT.csv](./results/Results_WID_data_IT.csv)):
 
 | Digit | Count | Actual Distribution  | Benford's Distribution | ZScore | Chi Square |
@@ -52,27 +53,28 @@ where:
      ```
      39490/127813 = 0.3089670064860382 ~ 30.89% 
     ```
- * `Benford's Distribution` is the expected distribution value following the Benford's law.
- * `ZScore` is the ZScore value of a digit
- * `Chi Square` is the chi-square value of a digit
+ * `Benford's Distribution` is the expected distribution value following the Benford's law for the first digit.
+ * `ZScore` is the ZScore value of a digit.
+ * `Chi Square` is the chi-square value of a digit.
  
 `ZScore` and `Chi Square` values can be used to determine if the input values might be fudged or corrupted. 
           
+          
 ## Statistical tests 
 We used different statistical tests for verifying Benford's law:
-* **ZScore**: used to verify single digit hypothesis: "_The digit `d` (where `d` in `{1, ... 9}`) adhere to Benford's law_".
+* **ZScore**: used to verify single digit hypothesis: "_The digit `d` (where `d` is in `{1, ... 9}`) adhere to Benford's law_".
 * **Chi-Square**: used to verify digit distribution hypothesis:  "_All the digits adhere to Benford's law_".
 
 ### ZScore
-TODO
+For more on ZScore, please visit [this Wiki page](https://en.wikipedia.org/wiki/Standard_score).  
 
 ### Chi-Square
-TODO
+For more on Chi-Square, please visti [this Wiki page](https://en.wikipedia.org/wiki/Chi-square_distribution).
 
 
 ## Results
-For each input file, the application generates an output file containing the digit distribution and statistical analysis. 
-For example, in the table below you can see the source file, and the corresponding result file:  
+For each input file, the application generates an output file containing the digit distribution and statistical analysis
+results. For example, in the table below you can see the source file, and the corresponding result file:  
 
 | Source File | Result File |
 | ----------  | ----------- |
@@ -83,10 +85,10 @@ For example, in the table below you can see the source file, and the correspondi
 [This](./src/main/resources/stats) is the directory containing all the source datasets, and [this](./results) is the 
 directory containing all the results files.
 
-In order to have an overall view of the computed results, the application generates a summary file called [Result_Summary.csv](./results/Results_Summary.csv) 
+In order to have an overall view of the generated results, the application generates a summary file called [Result_Summary.csv](./results/Results_Summary.csv) 
 where it lists the statistical test results for each dataset file. For example:
 
-| Source file | Country | # Lines  | # ZScore digit (&alpha;=0.05) | # ZScore digit (&alpha;=0.01) | Chi Square |
+| Source file | Country | # Lines  | # ZScore digit (&alpha;=0.05) | # ZScore digit (&alpha;=0.01) | P Value |
 | ----- | ----- | ----- | ---------------------  | ------ | ---------- |
 |WID_data_QJ.csv|"Central Asia"|3394|4|4|92.89329202812593|
 |WID_data_MG.csv|"Madagascar"|44322|6|6|1453.0893136931927|
@@ -98,6 +100,48 @@ where:
 significance of 5%.
 * `# ZScore digit (&alpha;=0.01)` is the number of digit (`{1 ... 9}`) that do not adhere to the Benford's law with a level of 
 significance of 1%.
-* `Chi Square` is the chi-square value for all the digit. 
+* `P Value` is the p value calculated using chi-square values for all the digits. 
+
+## Best and worst fit
+The statistical fit depends on which test you chose, but here below a small summary for best and worst fit using the 
+tests provided. 
+
+### Best and Worst Z-Score fit
+In order to obtain these rankings, the results has been ordered by:
+1. Z-Score (&alpha;=0.05) 
+2. Z-Score (&alpha;=0.01) 
+3. Number of Lines
+
+| Place | Country                  | # Lines | Z-Score | P value | 
+| ----- | -----                    | -----   | -----   | -----   |  
+| 1     | Turks and Caicos Islands | 645     | 0       | 0.278177159275576 | 
+| 2     | Solomon Islands          | 8544    | 1       | 0.080630695165187 | 
+| 3     | Costa Rica               | 9022    | 1       | 0.0651635195299   |
+| 3     | Nauru                    | 767     | 1       | 0.021708334109435 |
+| 3     | American Samoa           | 123     | 1       | 8.75998545293733E-06 |
+| 3     | Greenland                | 219     | 1       | 3.49650180857823E-08 |
+| ...   | ...                      | ...     | ...     | ...               |        
+| 334   | Italy                    | 127813  | 9       | 0                 |        
+| 335   | Germany                  | 130144  | 9       | 0                 |        
+| 336   | Czech Republic           | 143982  | 9       | 0                 |        
+| 337   | France                   | 895904  | 9       | 0                 |        
+
+
+### Best and Worst P-value fit
+In order to obtain these rankings, the results has been ordered by:
+1. P-value 
+2. Number of Lines
+
+| Place | Country                  | # Lines | Z-Score | P value | 
+| ----- | -----                    | -----   | -----   | -----   |  
+| 1     | Turks and Caicos Islands | 645     | 0       | 0.278177159275576 | 
+| 2     | Liechtenstein            | 327     | 2       | 0.088474505876344 |
+| 3     | Solomon Islands          | 8544    | 1       | 0.080630695165187 | 
+| ...   | ...                      | ...     | ...     | ...               |        
+| 335   | United Kingdom           | 130144  | 8       | 0                 |        
+| 336   | USA                      | 143982  | 5       | 0                 |        
+| 337   | France                   | 895904  | 9       | 0                 |    
+
+
 
 
