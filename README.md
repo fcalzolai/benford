@@ -6,7 +6,14 @@ actual distribution adhere to the Benford's law.
 
 Since this is a simple experiment, the code may be bugged, and the results may contain errors. 
 
-**TL:DR?** Jump to [Results](#results) or [Best and Worst fit](#best-and-worst-fit) sections.   
+##TL:DR 
+There are 4 countries that adhere to Benford's law (out of 337 economic zones):
+ * Turks and Caicos Islands 
+ * Liechtenstein
+ * Solomon Islands
+ * Costa Rica
+
+Jump to [Results](#results) or [Best and Worst fit](#best-and-worst-fit) sections.   
 
 
 ## Dataset and Methodology
@@ -89,7 +96,7 @@ directory containing all the results files.
 In order to have an overall view of the generated results, the application generates a summary file called [Result_Summary.csv](./results/Results_Summary.csv) 
 where it lists the statistical test results for each dataset file. For example:
 
-| Source file | Country | # Lines  | # ZScore digit (&alpha;=0.05) | # ZScore digit (&alpha;=0.01) | P Value |
+| Source file | Country | # Lines  | # ZScore digits (&alpha;=0.05) | # ZScore digits (&alpha;=0.01) | P Value |
 | ----- | ----- | ----- | ---------------------  | ------ | ---------- |
 |WID_data_QJ.csv|"Central Asia"|3394|4|4|92.89329202812593|
 |WID_data_MG.csv|"Madagascar"|44322|6|6|1453.0893136931927|

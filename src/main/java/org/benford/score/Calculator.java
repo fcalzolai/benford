@@ -35,13 +35,13 @@ public abstract class Calculator {
 
   private void checkDigitDistribution(double[] digitDistribution) {
     if (digitDistribution.length != 10) {
-      throw new IllegalArgumentException("digit distribution length must be 10");
+      throw new IllegalArgumentException("digits distribution length must be 10");
     }
 
     double tot = 0;
     for (double d : digitDistribution) {
       if (d > 1.0) {
-        throw new IllegalArgumentException("All the digit must be less then 1.0");
+        throw new IllegalArgumentException("All the digits must be less then 1.0");
       }
       tot += d;
     }
