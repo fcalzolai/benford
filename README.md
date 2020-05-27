@@ -4,8 +4,9 @@ The dataset used comes from the [World Income Database](https://wid.world/) (WID
 distribution for each dataset file provided by WID and then it applies several statistical tests to determine if the 
 actual distribution adhere to the Benford's law.
 
-Since this is a simple experiment, 
-the code may be bugged, and the results may contain errors.   
+Since this is a simple experiment, the code may be bugged, and the results may contain errors. 
+
+**TL:DR?** Jump to [Results](#results) or [Best and Worst fit](#best-and-worst-fit) sections.   
 
 
 ## Dataset and Methodology
