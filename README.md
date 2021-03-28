@@ -6,7 +6,7 @@ actual distribution adhere to the Benford's law.
 
 Since this is a simple experiment, the code may be bugged, and the results may contain errors. 
 
-## TL:DR 
+## TL;DR 
 There are 4 countries (out of 337 economic zones) that adhere to Benford's law:
  * Turks and Caicos Islands 
  * Liechtenstein
@@ -81,6 +81,23 @@ For more on Chi-Square, please visti [this Wiki page](https://en.wikipedia.org/w
 
 
 ## Results
+In order to have an overall view of the generated results, the application generates a summary file called [Result_Summary.csv](./results/Results_Summary.csv)
+where it lists the statistical test results for each dataset file. For example:
+
+| Source file | Country | # Lines  | # ZScore digits (&alpha;=0.05) | # ZScore digits (&alpha;=0.01) | P Value |
+| ----- | ----- | ----- | ---------------------  | ------ | ---------- |
+|WID_data_QJ.csv|"Central Asia"|3394|4|4|0|
+|WID_data_MG.csv|"Madagascar"|44322|6|6|0|
+|WID_data_MN.csv|"Mongolia"|8814|3|1|0.004184690723312|
+
+where:
+* `# Lines` is the number of lines in the corresponding input file
+* `# ZScore digit (&alpha;=0.05)` is the number of digit (`{1 ... 9}`) that do not adhere to the Benford's law with a level of
+  significance of 5%.
+* `# ZScore digit (&alpha;=0.01)` is the number of digit (`{1 ... 9}`) that do not adhere to the Benford's law with a level of
+  significance of 1%.
+* `P Value` is the p value calculated using chi-square values for all the digits.
+
 For each input file, the application generates an output file containing the digit distribution and statistical analysis
 results. For example, in the table below you can see the source file, and the corresponding result file:  
 
@@ -93,46 +110,30 @@ results. For example, in the table below you can see the source file, and the co
 [This](./src/main/resources/stats) is the directory containing all the source datasets, and [this](./results) is the 
 directory containing all the results files.
 
-In order to have an overall view of the generated results, the application generates a summary file called [Result_Summary.csv](./results/Results_Summary.csv) 
-where it lists the statistical test results for each dataset file. For example:
-
-| Source file | Country | # Lines  | # ZScore digits (&alpha;=0.05) | # ZScore digits (&alpha;=0.01) | P Value |
-| ----- | ----- | ----- | ---------------------  | ------ | ---------- |
-|WID_data_QJ.csv|"Central Asia"|3394|4|4|0|
-|WID_data_MG.csv|"Madagascar"|44322|6|6|0|
-|WID_data_MN.csv|"Mongolia"|8814|3|1|0.004184690723312|
-
-where: 
-* `# Lines` is the number of lines in the corresponding input file
-* `# ZScore digit (&alpha;=0.05)` is the number of digit (`{1 ... 9}`) that do not adhere to the Benford's law with a level of 
-significance of 5%.
-* `# ZScore digit (&alpha;=0.01)` is the number of digit (`{1 ... 9}`) that do not adhere to the Benford's law with a level of 
-significance of 1%.
-* `P Value` is the p value calculated using chi-square values for all the digits. 
-
 ## Best and worst fit
 The statistical fit depends on which test you chose, but here below a small summary for best and worst fit using the 
 tests provided. 
 
 ### Best and Worst Z-Score fit
-In order to obtain these rankings, the results has been ordered by:
-1. Z-Score (&alpha;=0.05) 
+The ZScore digit value is the number of digit (`{1 ... 9}`) that do not adhere to the Benford's law with a level of
+significance of 5% (or 1%). In order to obtain these rankings, the results has been ordered by:
+1. Z-Score (&alpha;=0.5) 
 2. Z-Score (&alpha;=0.01) 
 3. Number of Lines
 
-| Place | Country                  | # Lines | Z-Score | P value | 
-| ----- | -----                    | -----   | -----   | -----   |  
-| 1     | Turks and Caicos Islands | 645     | 0       | 0.278177159275576 | 
-| 2     | Solomon Islands          | 8544    | 1       | 0.080630695165187 | 
-| 3     | Costa Rica               | 9022    | 1       | 0.0651635195299   |
-| 3     | Nauru                    | 767     | 1       | 0.021708334109435 |
-| 3     | American Samoa           | 123     | 1       | 8.75998545293733E-06 |
-| 3     | Greenland                | 219     | 1       | 3.49650180857823E-08 |
-| ...   | ...                      | ...     | ...     | ...               |        
-| 334   | Italy                    | 127813  | 9       | 0                 |        
-| 335   | Germany                  | 130144  | 9       | 0                 |        
-| 336   | Czech Republic           | 143982  | 9       | 0                 |        
-| 337   | France                   | 895904  | 9       | 0                 |        
+| Place | Country                  | # Lines | Z-Score (5%) | Z-Score (1%) |
+| ----- | -----                    | -----   | -----        | -----   |
+| 1     | Turks and Caicos Islands | 645     | 0            | 0       | 
+| 2     | Solomon Islands          | 8544    | 1            | 0       | 
+| 3     | Costa Rica               | 9022    | 1            | 0       | 
+| 3     | Nauru                    | 767     | 1            | 0       | 
+| 3     | American Samoa           | 123     | 1            | 1       | 
+| 3     | Greenland                | 219     | 1            | 1       | 
+| ...   | ...                      | ...     | ...          | ...     |   
+| 334   | Italy                    | 127813  | 9            | 9       |        
+| 335   | Germany                  | 130144  | 9            | 9       |        
+| 336   | Czech Republic           | 143982  | 9            | 9       |         
+| 337   | France                   | 895904  | 9            | 9       |        
 
 
 ### Best and Worst P-value fit
@@ -140,16 +141,17 @@ In order to obtain these rankings, the results has been ordered by:
 1. P-value 
 2. Number of Lines
 
-| Place | Country                  | # Lines | Z-Score | P value | 
-| ----- | -----                    | -----   | -----   | -----   |  
-| 1     | Turks and Caicos Islands | 645     | 0       | 0.278177159275576 | 
-| 2     | Liechtenstein            | 327     | 2       | 0.088474505876344 |
-| 3     | Solomon Islands          | 8544    | 1       | 0.080630695165187 | 
-| ...   | ...                      | ...     | ...     | ...               |        
-| 335   | United Kingdom           | 130144  | 8       | 0                 |        
-| 336   | USA                      | 143982  | 5       | 0                 |        
-| 337   | France                   | 895904  | 9       | 0                 |    
+| Place | Country                  | # Lines | P value | 
+| ----- | -----                    | -----   | -----   |  
+| 1     | Turks and Caicos Islands | 645     | 0.278177159275576 | 
+| 2     | Liechtenstein            | 327     | 0.088474505876344 |
+| 3     | Solomon Islands          | 8544    | 0.080630695165187 | 
+| ...   | ...                      | ...     | ...               |        
+| 335   | United Kingdom           | 130144  | 0                 |        
+| 336   | USA                      | 143982  | 0                 |        
+| 337   | France                   | 895904  | 0                 |    
 
 
 
 
+   
